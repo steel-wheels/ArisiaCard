@@ -14,6 +14,12 @@ import UIKit
 
 class ViewController: MIViewController {
 
+        #if os(ISX)
+        @IBOutlet weak var mRootView: MIStack!
+        #else
+        @IBOutlet weak var mRootView: MIStack!
+        #endif
+
         override func viewDidLoad() {
                 super.viewDidLoad()
 
