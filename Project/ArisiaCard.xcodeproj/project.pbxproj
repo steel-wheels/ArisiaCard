@@ -11,11 +11,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05D419602E06332600D909B5 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F71CC32E06315C008509D8 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F71CC82E06315C008509D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		05D419712E06332800D909B5 /* Exceptions for "ArisiaCard_iOS" folder in "ArisiaCard_iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 05D4195F2E06332600D909B5 /* ArisiaCard_iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		05D419612E06332600D909B5 /* ArisiaCard_iOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				05D419712E06332800D909B5 /* Exceptions for "ArisiaCard_iOS" folder in "ArisiaCard_iOS" target */,
+			);
+			path = ArisiaCard_iOS;
+			sourceTree = "<group>";
+		};
 		05F71CC52E06315C008509D8 /* ArisiaCard */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ArisiaCard;
@@ -24,6 +43,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		05D4195D2E06332600D909B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		05F71CC02E06315C008509D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +65,7 @@
 			children = (
 				05F71CC52E06315C008509D8 /* ArisiaCard */,
 				05F71CD52E063186008509D8 /* Source */,
+				05D419612E06332600D909B5 /* ArisiaCard_iOS */,
 				05F71CC42E06315C008509D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				05F71CC32E06315C008509D8 /* ArisiaCard.app */,
+				05D419602E06332600D909B5 /* ArisiaCard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +91,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		05D4195F2E06332600D909B5 /* ArisiaCard_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05D419722E06332800D909B5 /* Build configuration list for PBXNativeTarget "ArisiaCard_iOS" */;
+			buildPhases = (
+				05D4195C2E06332600D909B5 /* Sources */,
+				05D4195D2E06332600D909B5 /* Frameworks */,
+				05D4195E2E06332600D909B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				05D419612E06332600D909B5 /* ArisiaCard_iOS */,
+			);
+			name = ArisiaCard_iOS;
+			packageProductDependencies = (
+			);
+			productName = ArisiaCard_iOS;
+			productReference = 05D419602E06332600D909B5 /* ArisiaCard.app */;
+			productType = "com.apple.product-type.application";
+		};
 		05F71CC22E06315C008509D8 /* ArisiaCard_macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard_macOS" */;
@@ -95,6 +145,9 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					05D4195F2E06332600D909B5 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					05F71CC22E06315C008509D8 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -115,11 +168,19 @@
 			projectRoot = "";
 			targets = (
 				05F71CC22E06315C008509D8 /* ArisiaCard_macOS */,
+				05D4195F2E06332600D909B5 /* ArisiaCard_iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		05D4195E2E06332600D909B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		05F71CC12E06315C008509D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,6 +191,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		05D4195C2E06332600D909B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		05F71CBF2E06315C008509D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +209,73 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		05D419732E06332800D909B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TR2DNF3P93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArisiaCard_iOS/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.iOS.ArisiaCard-iOS";
+				PRODUCT_NAME = ArisiaCard;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05D419742E06332800D909B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TR2DNF3P93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArisiaCard_iOS/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.iOS.ArisiaCard-iOS";
+				PRODUCT_NAME = ArisiaCard;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		05F71CD02E06315E008509D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -281,7 +416,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard.macOS";
 				PRODUCT_NAME = ArisiaCard;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -309,7 +444,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard.macOS";
 				PRODUCT_NAME = ArisiaCard;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -320,6 +455,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		05D419722E06332800D909B5 /* Build configuration list for PBXNativeTarget "ArisiaCard_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05D419732E06332800D909B5 /* Debug */,
+				05D419742E06332800D909B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		05F71CBE2E06315C008509D8 /* Build configuration list for PBXProject "ArisiaCard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
