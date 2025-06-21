@@ -63,9 +63,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		05F71CC22E06315C008509D8 /* ArisiaCard */ = {
+		05F71CC22E06315C008509D8 /* ArisiaCard_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard" */;
+			buildConfigurationList = 05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard_macOS" */;
 			buildPhases = (
 				05F71CBF2E06315C008509D8 /* Sources */,
 				05F71CC02E06315C008509D8 /* Frameworks */,
@@ -78,7 +78,7 @@
 			fileSystemSynchronizedGroups = (
 				05F71CC52E06315C008509D8 /* ArisiaCard */,
 			);
-			name = ArisiaCard;
+			name = ArisiaCard_macOS;
 			packageProductDependencies = (
 			);
 			productName = ArisiaCard;
@@ -114,7 +114,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				05F71CC22E06315C008509D8 /* ArisiaCard */,
+				05F71CC22E06315C008509D8 /* ArisiaCard_macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -282,7 +282,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArisiaCard;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -310,7 +310,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArisiaCard;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -329,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard" */ = {
+		05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05F71CD32E06315E008509D8 /* Debug */,
