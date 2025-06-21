@@ -8,10 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		0560EC6A2E0635B8001CC392 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* ViewController.swift */; };
+		0560EC6D2E063831001CC392 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; };
+		0560EC6E2E063831001CC392 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0560EC702E063849001CC392 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; };
+		0560EC712E063849001CC392 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05F71CC92E06315C008509D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0560EC6F2E063831001CC392 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0560EC6E2E063831001CC392 /* MultiUIKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0560EC722E063849001CC392 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0560EC712E063849001CC392 /* MultiUIKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiUIKit.xcframework; path = ../../../Library/Frameworks/MultiUIKit.xcframework; sourceTree = "<group>"; };
 		05D419602E06332600D909B5 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F71CC32E06315C008509D8 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F71CC82E06315C008509D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0560EC702E063849001CC392 /* MultiUIKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,18 +86,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0560EC6D2E063831001CC392 /* MultiUIKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0560EC6B2E063830001CC392 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		05F71CBA2E06315C008509D8 = {
 			isa = PBXGroup;
 			children = (
 				05F71CC52E06315C008509D8 /* ArisiaCard_macOS */,
 				05D419612E06332600D909B5 /* ArisiaCard_iOS */,
 				05F71CD52E063186008509D8 /* Source */,
+				0560EC6B2E063830001CC392 /* Frameworks */,
 				05F71CC42E06315C008509D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +140,7 @@
 				05D4195C2E06332600D909B5 /* Sources */,
 				05D4195D2E06332600D909B5 /* Frameworks */,
 				05D4195E2E06332600D909B5 /* Resources */,
+				0560EC722E063849001CC392 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -121,6 +163,7 @@
 				05F71CBF2E06315C008509D8 /* Sources */,
 				05F71CC02E06315C008509D8 /* Frameworks */,
 				05F71CC12E06315C008509D8 /* Resources */,
+				0560EC6F2E063831001CC392 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

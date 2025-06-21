@@ -5,11 +5,14 @@
 //  Created by Tomoo Hamada on 2025/06/21.
 //
 
+import MultiUIKit
 #if os(OSX)
-
 import Cocoa
+#else
+import UIKit
+#endif
 
-class ViewController: NSViewController {
+class ViewController: MIViewController {
 
         override func viewDidLoad() {
                 super.viewDidLoad()
@@ -17,26 +20,13 @@ class ViewController: NSViewController {
                 // Do any additional setup after loading the view.
         }
 
+#if os(OSX)
         override var representedObject: Any? {
                 didSet {
                 // Update the view, if already loaded.
                 }
         }
-}
-
-#else
-
-import UIKit
-
-class ViewController: UIViewController {
-
-        override func viewDidLoad() {
-                super.viewDidLoad()
-                // Do any additional setup after loading the view.
-        }
-
-
-}
-
 #endif
+}
+
 
