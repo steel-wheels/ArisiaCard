@@ -5,6 +5,8 @@
 //  Created by Tomoo Hamada on 2025/06/21.
 //
 
+#if os(OSX)
+
 import Cocoa
 
 class ViewController: NSViewController {
@@ -20,7 +22,21 @@ class ViewController: NSViewController {
                 // Update the view, if already loaded.
                 }
         }
+}
+
+#else
+
+import UIKit
+
+class ViewController: UIViewController {
+
+        override func viewDidLoad() {
+                super.viewDidLoad()
+                // Do any additional setup after loading the view.
+        }
 
 
 }
+
+#endif
 

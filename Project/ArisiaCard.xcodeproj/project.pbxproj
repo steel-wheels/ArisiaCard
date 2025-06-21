@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0560EC6A2E0635B8001CC392 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* ViewController.swift */; };
 		05F71CC92E06315C008509D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,9 +36,9 @@
 			path = ArisiaCard_iOS;
 			sourceTree = "<group>";
 		};
-		05F71CC52E06315C008509D8 /* ArisiaCard */ = {
+		05F71CC52E06315C008509D8 /* ArisiaCard_macOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ArisiaCard;
+			path = ArisiaCard_macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -63,9 +64,9 @@
 		05F71CBA2E06315C008509D8 = {
 			isa = PBXGroup;
 			children = (
-				05F71CC52E06315C008509D8 /* ArisiaCard */,
-				05F71CD52E063186008509D8 /* Source */,
+				05F71CC52E06315C008509D8 /* ArisiaCard_macOS */,
 				05D419612E06332600D909B5 /* ArisiaCard_iOS */,
+				05F71CD52E063186008509D8 /* Source */,
 				05F71CC42E06315C008509D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,7 +127,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				05F71CC52E06315C008509D8 /* ArisiaCard */,
+				05F71CC52E06315C008509D8 /* ArisiaCard_macOS */,
 			);
 			name = ArisiaCard_macOS;
 			packageProductDependencies = (
@@ -195,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0560EC6A2E0635B8001CC392 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ArisiaCard/ArisiaCard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ArisiaCard_macOS/ArisiaCard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -429,7 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ArisiaCard/ArisiaCard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ArisiaCard_macOS/ArisiaCard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
