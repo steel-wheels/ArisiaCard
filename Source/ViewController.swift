@@ -12,13 +12,13 @@ import Cocoa
 import UIKit
 #endif
 
-class ViewController: MIViewController {
+class MainViewController: MIViewController {
 
-        #if os(ISX)
+#if os(ISX)
         @IBOutlet weak var mRootView: MIStack!
-        #else
+#else
         @IBOutlet weak var mRootView: MIStack!
-        #endif
+#endif
 
         override func viewDidLoad() {
                 super.viewDidLoad()

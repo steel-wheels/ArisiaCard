@@ -714,15 +714,12 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="30h-Cm-91O" secondAttribute="bottom" id="1Vf-Jx-v7b"/>
-                            <constraint firstAttribute="trailing" secondItem="30h-Cm-91O" secondAttribute="trailing" id="9wR-gH-UVh"/>
-                            <constraint firstItem="30h-Cm-91O" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="dch-pt-1Ub"/>
-                            <constraint firstItem="30h-Cm-91O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="oYJ-V5-6om"/>
+                            <constraint firstItem="30h-Cm-91O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="0ZM-tA-1VE"/>
+                            <constraint firstItem="30h-Cm-91O" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="1XJ-QK-df0"/>
+                            <constraint firstAttribute="trailing" secondItem="30h-Cm-91O" secondAttribute="trailing" id="Fs3-Yd-k4j"/>
+                            <constraint firstAttribute="bottom" secondItem="30h-Cm-91O" secondAttribute="bottom" id="hqt-xL-5cm"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="mRootView" destination="30h-Cm-91O" id="dcK-OX-Jby"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
