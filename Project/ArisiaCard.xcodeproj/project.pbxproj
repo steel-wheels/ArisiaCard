@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0560EC6A2E0635B8001CC392 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* ViewController.swift */; };
+		0560EC6A2E0635B8001CC392 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* MainViewController.swift */; };
 		0560EC6D2E063831001CC392 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; };
 		0560EC6E2E063831001CC392 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0560EC702E063849001CC392 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; };
@@ -20,7 +20,7 @@
 		05CED8C12E06DB3A0028C549 /* MultiDataKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05CED8C22E06DB540028C549 /* MultiDataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; };
 		05CED8C32E06DB540028C549 /* MultiDataKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05F71CC92E06315C008509D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* ViewController.swift */; };
+		05F71CC92E06315C008509D8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,7 +58,7 @@
 		05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiDataKit.xcframework; path = ../../../Library/Frameworks/MultiDataKit.xcframework; sourceTree = "<group>"; };
 		05D419602E06332600D909B5 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F71CC32E06315C008509D8 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		05F71CC82E06315C008509D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		05F71CC82E06315C008509D8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -144,7 +144,7 @@
 		05F71CD52E063186008509D8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				05F71CC82E06315C008509D8 /* ViewController.swift */,
+				05F71CC82E06315C008509D8 /* MainViewController.swift */,
 			);
 			name = Source;
 			path = ../Source;
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0560EC6A2E0635B8001CC392 /* ViewController.swift in Sources */,
+				0560EC6A2E0635B8001CC392 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F71CC92E06315C008509D8 /* ViewController.swift in Sources */,
+				05F71CC92E06315C008509D8 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
