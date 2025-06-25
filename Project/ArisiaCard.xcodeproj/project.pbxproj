@@ -7,45 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0560EC6A2E0635B8001CC392 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* MainViewController.swift */; };
-		0560EC6D2E063831001CC392 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; };
-		0560EC6E2E063831001CC392 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0560EC702E063849001CC392 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; };
-		0560EC712E063849001CC392 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05CED8BB2E06DAB50028C549 /* MultiFrameKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BA2E06DAB40028C549 /* MultiFrameKit.xcframework */; };
-		05CED8BC2E06DAB50028C549 /* MultiFrameKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BA2E06DAB40028C549 /* MultiFrameKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05CED8BD2E06DAD10028C549 /* MultiFrameKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BA2E06DAB40028C549 /* MultiFrameKit.xcframework */; };
-		05CED8BE2E06DAD10028C549 /* MultiFrameKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BA2E06DAB40028C549 /* MultiFrameKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05CED8C02E06DB3A0028C549 /* MultiDataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; };
-		05CED8C12E06DB3A0028C549 /* MultiDataKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05CED8C22E06DB540028C549 /* MultiDataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; };
-		05CED8C32E06DB540028C549 /* MultiDataKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05F71CC92E06315C008509D8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F71CC82E06315C008509D8 /* MainViewController.swift */; };
+		055618FE2E0C412300BEB418 /* MultiFrameKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */; };
+		055618FF2E0C412300BEB418 /* MultiFrameKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		055619002E0C412300BEB418 /* MultiDataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */; };
+		055619012E0C412300BEB418 /* MultiDataKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		055619022E0C412300BEB418 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */; };
+		055619032E0C412300BEB418 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		055619062E0C419100BEB418 /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055619052E0C419100BEB418 /* ToolViewController.swift */; };
+		059207C82E08189100E19709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207BD2E08189100E19709 /* AppDelegate.swift */; };
+		059207C92E08189100E19709 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C02E08189100E19709 /* Document.swift */; };
+		059207CA2E08189100E19709 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0560EC6F2E063831001CC392 /* Embed Frameworks */ = {
+		055619042E0C412300BEB418 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				05CED8BC2E06DAB50028C549 /* MultiFrameKit.xcframework in Embed Frameworks */,
-				0560EC6E2E063831001CC392 /* MultiUIKit.xcframework in Embed Frameworks */,
-				05CED8C12E06DB3A0028C549 /* MultiDataKit.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0560EC722E063849001CC392 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				05CED8BE2E06DAD10028C549 /* MultiFrameKit.xcframework in Embed Frameworks */,
-				0560EC712E063849001CC392 /* MultiUIKit.xcframework in Embed Frameworks */,
-				05CED8C32E06DB540028C549 /* MultiDataKit.xcframework in Embed Frameworks */,
+				055619012E0C412300BEB418 /* MultiDataKit.xcframework in Embed Frameworks */,
+				055619032E0C412300BEB418 /* MultiUIKit.xcframework in Embed Frameworks */,
+				055618FF2E0C412300BEB418 /* MultiFrameKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,199 +36,153 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiUIKit.xcframework; path = ../../../Library/Frameworks/MultiUIKit.xcframework; sourceTree = "<group>"; };
-		05CED8BA2E06DAB40028C549 /* MultiFrameKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiFrameKit.xcframework; path = ../../../Library/Frameworks/MultiFrameKit.xcframework; sourceTree = "<group>"; };
-		05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiDataKit.xcframework; path = ../../../Library/Frameworks/MultiDataKit.xcframework; sourceTree = "<group>"; };
-		05D419602E06332600D909B5 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		05F71CC32E06315C008509D8 /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		05F71CC82E06315C008509D8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiFrameKit.xcframework; path = ../../../Library/Frameworks/MultiFrameKit.xcframework; sourceTree = "<group>"; };
+		055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiDataKit.xcframework; path = ../../../Library/Frameworks/MultiDataKit.xcframework; sourceTree = "<group>"; };
+		055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiUIKit.xcframework; path = ../../../Library/Frameworks/MultiUIKit.xcframework; sourceTree = "<group>"; };
+		055619052E0C419100BEB418 /* ToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolViewController.swift; sourceTree = "<group>"; };
+		059207BD2E08189100E19709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		059207C02E08189100E19709 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		059207C32E08189100E19709 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		05D7EB652E08185D004272CC /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		05D419712E06332800D909B5 /* Exceptions for "ArisiaCard_iOS" folder in "ArisiaCard_iOS" target */ = {
+		05D7EB752E08185F004272CC /* Exceptions for "ArisiaCard_macOS" folder in "ArisiaCard" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 05D4195F2E06332600D909B5 /* ArisiaCard_iOS */;
+			target = 05D7EB642E08185D004272CC /* ArisiaCard */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		05D419612E06332600D909B5 /* ArisiaCard_iOS */ = {
+		05D7EB672E08185D004272CC /* ArisiaCard_macOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				05D419712E06332800D909B5 /* Exceptions for "ArisiaCard_iOS" folder in "ArisiaCard_iOS" target */,
+				05D7EB752E08185F004272CC /* Exceptions for "ArisiaCard_macOS" folder in "ArisiaCard" target */,
 			);
-			path = ArisiaCard_iOS;
-			sourceTree = "<group>";
-		};
-		05F71CC52E06315C008509D8 /* ArisiaCard_macOS */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ArisiaCard_macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		05D4195D2E06332600D909B5 /* Frameworks */ = {
+		05D7EB622E08185D004272CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05CED8BD2E06DAD10028C549 /* MultiFrameKit.xcframework in Frameworks */,
-				0560EC702E063849001CC392 /* MultiUIKit.xcframework in Frameworks */,
-				05CED8C22E06DB540028C549 /* MultiDataKit.xcframework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		05F71CC02E06315C008509D8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05CED8BB2E06DAB50028C549 /* MultiFrameKit.xcframework in Frameworks */,
-				0560EC6D2E063831001CC392 /* MultiUIKit.xcframework in Frameworks */,
-				05CED8C02E06DB3A0028C549 /* MultiDataKit.xcframework in Frameworks */,
+				055619002E0C412300BEB418 /* MultiDataKit.xcframework in Frameworks */,
+				055619022E0C412300BEB418 /* MultiUIKit.xcframework in Frameworks */,
+				055618FE2E0C412300BEB418 /* MultiFrameKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0560EC6B2E063830001CC392 /* Frameworks */ = {
+		055618FA2E0C412300BEB418 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				05CED8BF2E06DB3A0028C549 /* MultiDataKit.xcframework */,
-				05CED8BA2E06DAB40028C549 /* MultiFrameKit.xcframework */,
-				0560EC6C2E063831001CC392 /* MultiUIKit.xcframework */,
+				055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */,
+				055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */,
+				055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		05F71CBA2E06315C008509D8 = {
+		059207CB2E081CF100E19709 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				05F71CC52E06315C008509D8 /* ArisiaCard_macOS */,
-				05D419612E06332600D909B5 /* ArisiaCard_iOS */,
-				05F71CD52E063186008509D8 /* Source */,
-				0560EC6B2E063830001CC392 /* Frameworks */,
-				05F71CC42E06315C008509D8 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		05F71CC42E06315C008509D8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				05F71CC32E06315C008509D8 /* ArisiaCard.app */,
-				05D419602E06332600D909B5 /* ArisiaCard.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		05F71CD52E063186008509D8 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				05F71CC82E06315C008509D8 /* MainViewController.swift */,
+				059207BD2E08189100E19709 /* AppDelegate.swift */,
+				059207C02E08189100E19709 /* Document.swift */,
+				059207C32E08189100E19709 /* ViewController.swift */,
+				055619052E0C419100BEB418 /* ToolViewController.swift */,
 			);
 			name = Source;
 			path = ../Source;
 			sourceTree = "<group>";
 		};
+		05D7EB5C2E08185D004272CC = {
+			isa = PBXGroup;
+			children = (
+				05D7EB672E08185D004272CC /* ArisiaCard_macOS */,
+				059207CB2E081CF100E19709 /* Source */,
+				055618FA2E0C412300BEB418 /* Frameworks */,
+				05D7EB662E08185D004272CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05D7EB662E08185D004272CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05D7EB652E08185D004272CC /* ArisiaCard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		05D4195F2E06332600D909B5 /* ArisiaCard_iOS */ = {
+		05D7EB642E08185D004272CC /* ArisiaCard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05D419722E06332800D909B5 /* Build configuration list for PBXNativeTarget "ArisiaCard_iOS" */;
+			buildConfigurationList = 05D7EB762E08185F004272CC /* Build configuration list for PBXNativeTarget "ArisiaCard" */;
 			buildPhases = (
-				05D4195C2E06332600D909B5 /* Sources */,
-				05D4195D2E06332600D909B5 /* Frameworks */,
-				05D4195E2E06332600D909B5 /* Resources */,
-				0560EC722E063849001CC392 /* Embed Frameworks */,
+				05D7EB612E08185D004272CC /* Sources */,
+				05D7EB622E08185D004272CC /* Frameworks */,
+				05D7EB632E08185D004272CC /* Resources */,
+				055619042E0C412300BEB418 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				05D419612E06332600D909B5 /* ArisiaCard_iOS */,
+				05D7EB672E08185D004272CC /* ArisiaCard_macOS */,
 			);
-			name = ArisiaCard_iOS;
-			packageProductDependencies = (
-			);
-			productName = ArisiaCard_iOS;
-			productReference = 05D419602E06332600D909B5 /* ArisiaCard.app */;
-			productType = "com.apple.product-type.application";
-		};
-		05F71CC22E06315C008509D8 /* ArisiaCard_macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard_macOS" */;
-			buildPhases = (
-				05F71CBF2E06315C008509D8 /* Sources */,
-				05F71CC02E06315C008509D8 /* Frameworks */,
-				05F71CC12E06315C008509D8 /* Resources */,
-				0560EC6F2E063831001CC392 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				05F71CC52E06315C008509D8 /* ArisiaCard_macOS */,
-			);
-			name = ArisiaCard_macOS;
+			name = ArisiaCard;
 			packageProductDependencies = (
 			);
 			productName = ArisiaCard;
-			productReference = 05F71CC32E06315C008509D8 /* ArisiaCard.app */;
+			productReference = 05D7EB652E08185D004272CC /* ArisiaCard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		05F71CBB2E06315C008509D8 /* Project object */ = {
+		05D7EB5D2E08185D004272CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					05D4195F2E06332600D909B5 = {
-						CreatedOnToolsVersion = 16.4;
-					};
-					05F71CC22E06315C008509D8 = {
+					05D7EB642E08185D004272CC = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = 05F71CBE2E06315C008509D8 /* Build configuration list for PBXProject "ArisiaCard" */;
+			buildConfigurationList = 05D7EB602E08185D004272CC /* Build configuration list for PBXProject "ArisiaCard" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 05F71CBA2E06315C008509D8;
+			mainGroup = 05D7EB5C2E08185D004272CC;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 05F71CC42E06315C008509D8 /* Products */;
+			productRefGroup = 05D7EB662E08185D004272CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				05F71CC22E06315C008509D8 /* ArisiaCard_macOS */,
-				05D4195F2E06332600D909B5 /* ArisiaCard_iOS */,
+				05D7EB642E08185D004272CC /* ArisiaCard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		05D4195E2E06332600D909B5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		05F71CC12E06315C008509D8 /* Resources */ = {
+		05D7EB632E08185D004272CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,93 +192,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		05D4195C2E06332600D909B5 /* Sources */ = {
+		05D7EB612E08185D004272CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0560EC6A2E0635B8001CC392 /* MainViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		05F71CBF2E06315C008509D8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05F71CC92E06315C008509D8 /* MainViewController.swift in Sources */,
+				055619062E0C419100BEB418 /* ToolViewController.swift in Sources */,
+				059207C82E08189100E19709 /* AppDelegate.swift in Sources */,
+				059207C92E08189100E19709 /* Document.swift in Sources */,
+				059207CA2E08189100E19709 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		05D419732E06332800D909B5 /* Debug */ = {
+		05D7EB772E08185F004272CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ArisiaCard_macOS/ArisiaCard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TR2DNF3P93;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ArisiaCard_iOS/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				INFOPLIST_FILE = ArisiaCard_macOS/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.iOS.ArisiaCard-iOS";
-				PRODUCT_NAME = ArisiaCard;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		05D419742E06332800D909B5 /* Release */ = {
+		05D7EB782E08185F004272CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ArisiaCard_macOS/ArisiaCard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TR2DNF3P93;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ArisiaCard_iOS/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				INFOPLIST_FILE = ArisiaCard_macOS/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.iOS.ArisiaCard-iOS";
-				PRODUCT_NAME = ArisiaCard;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		05F71CD02E06315E008509D8 /* Debug */ = {
+		05D7EB792E08185F004272CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -405,7 +328,7 @@
 			};
 			name = Debug;
 		};
-		05F71CD12E06315E008509D8 /* Release */ = {
+		05D7EB7A2E08185F004272CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -461,93 +384,28 @@
 			};
 			name = Release;
 		};
-		05F71CD32E06315E008509D8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ArisiaCard_macOS/ArisiaCard.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TR2DNF3P93;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard.macOS";
-				PRODUCT_NAME = ArisiaCard;
-				REGISTER_APP_GROUPS = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		05F71CD42E06315E008509D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ArisiaCard_macOS/ArisiaCard.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TR2DNF3P93;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.ArisiaCard.macOS";
-				PRODUCT_NAME = ArisiaCard;
-				REGISTER_APP_GROUPS = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		05D419722E06332800D909B5 /* Build configuration list for PBXNativeTarget "ArisiaCard_iOS" */ = {
+		05D7EB602E08185D004272CC /* Build configuration list for PBXProject "ArisiaCard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				05D419732E06332800D909B5 /* Debug */,
-				05D419742E06332800D909B5 /* Release */,
+				05D7EB792E08185F004272CC /* Debug */,
+				05D7EB7A2E08185F004272CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05F71CBE2E06315C008509D8 /* Build configuration list for PBXProject "ArisiaCard" */ = {
+		05D7EB762E08185F004272CC /* Build configuration list for PBXNativeTarget "ArisiaCard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				05F71CD02E06315E008509D8 /* Debug */,
-				05F71CD12E06315E008509D8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		05F71CD22E06315E008509D8 /* Build configuration list for PBXNativeTarget "ArisiaCard_macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				05F71CD32E06315E008509D8 /* Debug */,
-				05F71CD42E06315E008509D8 /* Release */,
+				05D7EB772E08185F004272CC /* Debug */,
+				05D7EB782E08185F004272CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 05F71CBB2E06315C008509D8 /* Project object */;
+	rootObject = 05D7EB5D2E08185D004272CC /* Project object */;
 }
