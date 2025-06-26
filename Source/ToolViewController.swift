@@ -16,10 +16,15 @@ public class ToolViewController: MIViewController
                 let root = MIStack()
                 root.axis = .vertical
 
+                let buttonimg = MIImageView()
+                buttonimg.set(symbol: .buttonHorizontal, size: .regular)
+                root.addArrangedSubView(buttonimg)
+
                 let button = MIButton()
                 button.title = "Hello"
                 root.addArrangedSubView(button)
 
                 self.view = root
+                root.setFrameSize(NSSize(width: 320, height: 240))
         }
 }
