@@ -337,16 +337,10 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Tools" id="jxT-CU-nIS" userLabel="Tool">
+                            <menuItem title="Format" id="jxT-CU-nIS" userLabel="Format">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Tools" id="GEO-Iw-cKr">
+                                <menu key="submenu" title="Format" id="GEO-Iw-cKr">
                                     <items>
-                                        <menuItem title="Widgets" id="Gi5-1S-RQB">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="openSettingWindow:" target="Voe-Tx-rLC" id="4Yt-zY-eIw"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Text" id="Fal-I4-PZk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Text" id="d9c-me-L2H">

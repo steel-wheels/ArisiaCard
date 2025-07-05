@@ -16,8 +16,8 @@ public class ToolViewController: MIViewController
                 let root = MIStack()
                 root.axis = .vertical
 
-                let buttonimg = MIImageView()
-                buttonimg.set(symbol: .buttonHorizontal, size: .regular)
+                let buttonimg = MIIconView()
+                buttonimg.set(symbol: .buttonHorizontalTopPress, size: .regular)
                 root.addArrangedSubView(buttonimg)
 
                 let button = MIButton()
