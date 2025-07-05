@@ -5,10 +5,11 @@
  *   Copyright (C) 2025 Steel Wheels Project
  */
 
+import MultiUIKit
 import Cocoa
 
-class ViewController: NSViewController {
-
+class ViewController: MITabViewController
+{
         override func viewDidLoad() {
                 super.viewDidLoad()
 
@@ -20,7 +21,5 @@ class ViewController: NSViewController {
                 // Update the view, if already loaded.
                 }
         }
-
-
 }
 
