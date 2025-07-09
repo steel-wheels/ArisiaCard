@@ -1,5 +1,5 @@
 /*
- * @file ToolViewController.swift
+ * @file StackViewController.swift
  * @description Define ToolViewController class
  * @par Copyright
  *   Copyright (C) 2025 Steel Wheels Project
@@ -8,7 +8,7 @@
 import MultiUIKit
 import Foundation
 
-public class ToolViewController: MIViewController
+public class StackViewController: MIViewController
 {
         public override func viewDidLoad() {
                 super.viewDidLoad()
@@ -25,6 +25,6 @@ public class ToolViewController: MIViewController
                 root.addArrangedSubView(button)
 
                 self.view = root
-                root.setFrameSize(NSSize(width: 320, height: 240))
+                //root.setFrameSize(NSSize(width: 320, height: 240))
         }
 }

@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
                 return true
         }
 
-        #if os(OSX)
+        #if false
         private var mToolWindowOpened:  Bool      = false
         private var mToolWindow:        MIWindow? = nil
 

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -526,7 +527,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="56" y="-64"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -542,20 +543,49 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="5gI-5U-AMq" kind="relationship" relationship="window.shadowedContentViewController" id="nsd-lR-9xd"/>
+                        <segue destination="BjT-Mf-hym" kind="relationship" relationship="window.shadowedContentViewController" id="f1I-oF-d5E"/>
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="55" y="203"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Root View Controller-->
+        <scene sceneID="nPH-jR-wbQ">
             <objects>
-                <viewController id="5gI-5U-AMq" customClass="ViewController" customModule="ArisiaCard" customModuleProvider="target" sceneMemberID="viewController"/>
-                <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <tabViewController selectedTabViewItemIndex="0" id="BjT-Mf-hym" customClass="RootViewController" customModule="ArisiaCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="1wg-4I-kx3"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="tQm-NY-fCC">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="BjT-Mf-hym" id="8wp-Oq-BaZ"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="tQm-NY-fCC" id="auq-re-Iqn"/>
+                        <segue destination="ynR-Yj-nG7" kind="relationship" relationship="tabItems" id="x38-2x-vxL"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="rhX-Tx-ocJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="55" y="708"/>
+        </scene>
+        <!--Stack View Controller-->
+        <scene sceneID="CbZ-p9-K9b">
+            <objects>
+                <viewController id="ynR-Yj-nG7" customClass="StackViewController" customModule="ArisiaCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="XpD-Z0-CTt">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="mQC-x7-ea8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55" y="1212"/>
         </scene>
     </scenes>
 </document>

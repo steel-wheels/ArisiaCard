@@ -13,10 +13,10 @@
 		055619012E0C412300BEB418 /* MultiDataKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		055619022E0C412300BEB418 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */; };
 		055619032E0C412300BEB418 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		055619062E0C419100BEB418 /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055619052E0C419100BEB418 /* ToolViewController.swift */; };
+		055619062E0C419100BEB418 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055619052E0C419100BEB418 /* StackViewController.swift */; };
 		059207C82E08189100E19709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207BD2E08189100E19709 /* AppDelegate.swift */; };
 		059207C92E08189100E19709 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C02E08189100E19709 /* Document.swift */; };
-		059207CA2E08189100E19709 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* ViewController.swift */; };
+		059207CA2E08189100E19709 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,10 +39,10 @@
 		055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiFrameKit.xcframework; path = ../../../Library/Frameworks/MultiFrameKit.xcframework; sourceTree = "<group>"; };
 		055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiDataKit.xcframework; path = ../../../Library/Frameworks/MultiDataKit.xcframework; sourceTree = "<group>"; };
 		055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiUIKit.xcframework; path = ../../../Library/Frameworks/MultiUIKit.xcframework; sourceTree = "<group>"; };
-		055619052E0C419100BEB418 /* ToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolViewController.swift; sourceTree = "<group>"; };
+		055619052E0C419100BEB418 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		059207BD2E08189100E19709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059207C02E08189100E19709 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		059207C32E08189100E19709 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		059207C32E08189100E19709 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		05D7EB652E08185D004272CC /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,8 +96,8 @@
 			children = (
 				059207BD2E08189100E19709 /* AppDelegate.swift */,
 				059207C02E08189100E19709 /* Document.swift */,
-				059207C32E08189100E19709 /* ViewController.swift */,
-				055619052E0C419100BEB418 /* ToolViewController.swift */,
+				059207C32E08189100E19709 /* RootViewController.swift */,
+				055619052E0C419100BEB418 /* StackViewController.swift */,
 			);
 			name = Source;
 			path = ../Source;
@@ -196,10 +196,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				055619062E0C419100BEB418 /* ToolViewController.swift in Sources */,
+				055619062E0C419100BEB418 /* StackViewController.swift in Sources */,
 				059207C82E08189100E19709 /* AppDelegate.swift in Sources */,
 				059207C92E08189100E19709 /* Document.swift in Sources */,
-				059207CA2E08189100E19709 /* ViewController.swift in Sources */,
+				059207CA2E08189100E19709 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,18 +8,25 @@
 import MultiUIKit
 import Cocoa
 
-class ViewController: MITabViewController
+class RootViewController: MITabViewController
 {
         override func viewDidLoad() {
                 super.viewDidLoad()
 
                 // Do any additional setup after loading the view.
+                //addNewController()
+                //switchView(index: 0)
         }
 
         override var representedObject: Any? {
                 didSet {
                 // Update the view, if already loaded.
                 }
+        }
+
+        private func addNewController() {
+                let controller = StackViewController()
+                super.pushViewController(viewController: controller)
         }
 }
 
