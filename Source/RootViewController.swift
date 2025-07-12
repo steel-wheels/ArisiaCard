@@ -8,8 +8,14 @@
 import MultiUIKit
 import Cocoa
 
+import ArisiaScript
+
 class RootViewController: MITabViewController
 {
+        public func loadFrame(rootFrame rframe: ALFrame) {
+                NSLog("loadFrame at \(#function)")
+        }
+
         override func viewDidLoad() {
                 super.viewDidLoad()
 

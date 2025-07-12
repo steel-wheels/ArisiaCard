@@ -13,10 +13,12 @@ class Document: NSDocument
         static let DocumentTypeName = "com.github.steelwheels.arisiascript.script"
 
         private var mRootFrame:         ALFrame
+        private var mDidFrameUpdated:   Bool
 
         override init() {
                 // After the boot, the root frame is empty
-                mRootFrame = ALFrame()
+                mRootFrame              = ALFrame()
+                mDidFrameUpdated        = true
                 super.init()
                 // Add your subclass-specific initialization here.
         }
@@ -30,6 +32,8 @@ class Document: NSDocument
                 let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
                 let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
                 self.addWindowController(windowController)
+                // Update contents
+                updateFrame()
         }
 
         override func data(ofType typeName: String) throws -> Data {
@@ -39,11 +43,11 @@ class Document: NSDocument
                         if let data = text.data(using: .utf8) {
                                 return data
                         } else {
-                                NSLog("failed to encode at \(#function)")
+                                NSLog("[Error] failed to encode at \(#function)")
                                 throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
                         }
                 default:
-                        NSLog("typename: \(typeName) at \(#function)")
+                        NSLog("[Error] typename: \(typeName) at \(#function)")
                         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
                 }
         }
@@ -56,19 +60,37 @@ class Document: NSDocument
                                 let parser = ALFrameParser()
                                 switch parser.parse(string: text) {
                                 case .success(let frame):
-                                        mRootFrame = frame
+                                        mRootFrame       = frame
+                                        mDidFrameUpdated = true
                                 case .failure(let err):
                                         throw err
-
                                 }
                         } else {
-                                NSLog("failed to decode at \(#function)")
+                                NSLog("[Error] failed to decode at \(#function)")
                                 throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
                         }
                 default:
-                        NSLog("typename: \(typeName) at \(#function)")
+                        NSLog("[Error] typename: \(typeName) at \(#function)")
                         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
                 }
+        }
+
+        private func updateFrame() {
+                if mDidFrameUpdated {
+                        if let rctrl = rootViewController() {
+                                rctrl.loadFrame(rootFrame: mRootFrame)
+                        }
+                        mDidFrameUpdated = true
+                }
+        }
+
+        private func rootViewController() -> RootViewController? {
+                for winctrl in self.windowControllers {
+                        if let viewctrl = winctrl.contentViewController as? RootViewController {
+                                return viewctrl
+                        }
+                }
+                return nil
         }
 }
 
