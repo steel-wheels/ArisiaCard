@@ -5,12 +5,19 @@
  *   Copyright (C) 2025 Steel Wheels Project
  */
 
+import ArisiaScript
 import Cocoa
 
-class Document: NSDocument {
+class Document: NSDocument
+{
+        static let DocumentTypeName = "com.github.steelwheels.arisiascript.script"
+
+        private var mRootFrame:         ALFrame
 
         override init() {
-            super.init()
+                // After the boot, the root frame is empty
+                mRootFrame = ALFrame()
+                super.init()
                 // Add your subclass-specific initialization here.
         }
 
@@ -26,18 +33,42 @@ class Document: NSDocument {
         }
 
         override func data(ofType typeName: String) throws -> Data {
-                // Insert code here to write your document to data of the specified type, throwing an error in case of failure.
-                // Alternatively, you could remove this method and override fileWrapper(ofType:), write(to:ofType:), or write(to:ofType:for:originalContentsURL:) instead.
-                throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                switch typeName {
+                case Document.DocumentTypeName:
+                        let text = mRootFrame.encode()
+                        if let data = text.data(using: .utf8) {
+                                return data
+                        } else {
+                                NSLog("failed to encode at \(#function)")
+                                throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                        }
+                default:
+                        NSLog("typename: \(typeName) at \(#function)")
+                        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                }
         }
 
         override func read(from data: Data, ofType typeName: String) throws {
-                // Insert code here to read your document from the given data of the specified type, throwing an error in case of failure.
-                // Alternatively, you could remove this method and override read(from:ofType:) instead.
-                // If you do, you should also override isEntireFileLoaded to return false if the contents are lazily loaded.
-                throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                switch typeName {
+                case Document.DocumentTypeName:
+                        if let text = String(data: data, encoding: .utf8) {
+                                //NSLog("source: \(text)")
+                                let parser = ALFrameParser()
+                                switch parser.parse(string: text) {
+                                case .success(let frame):
+                                        mRootFrame = frame
+                                case .failure(let err):
+                                        throw err
+
+                                }
+                        } else {
+                                NSLog("failed to decode at \(#function)")
+                                throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                        }
+                default:
+                        NSLog("typename: \(typeName) at \(#function)")
+                        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                }
         }
-
-
 }
 
