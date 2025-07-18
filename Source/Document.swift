@@ -6,21 +6,32 @@
  */
 
 import ArisiaScript
+import MultiDataKit
 import Cocoa
 
 class Document: NSDocument
 {
-        static let DocumentTypeName = "com.github.steelwheels.arisiascript.script"
+        static let DocumentTypeName = "com.github.steelwheels.arisiacard.stack"
 
-        private var mRootFrame:         ALFrame
-        private var mDidFrameUpdated:   Bool
+        private var mStack:             ALStack
+        private var mDidStackLoaded:    Bool
 
         override init() {
-                // After the boot, the root frame is empty
-                mRootFrame              = ALFrame()
-                mDidFrameUpdated        = true
+                if let resdir = FileManager.default.resourceDirectory {
+                        let pkgdir = resdir.appending(path: "Stacks/Default.astack")
+                        switch ALStackLoader.load(packageDirectory: pkgdir) {
+                        case .success(let stack):
+                                mStack = stack
+                        case .failure(let err):
+                                NSLog("[Error] \(MIError.errorToString(error: err)) at \(#function)")
+                                mStack = ALStack(packageDirectory: pkgdir)
+                        }
+                } else {
+                        NSLog("[Error] Failed to get resource directory")
+                        mStack = ALStack(packageDirectory: URL(fileURLWithPath: "/dev/null"))
+                }
+                mDidStackLoaded = true
                 super.init()
-                // Add your subclass-specific initialization here.
         }
 
         override class var autosavesInPlace: Bool {
@@ -33,18 +44,19 @@ class Document: NSDocument
                 let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
                 self.addWindowController(windowController)
                 // Update contents
-                updateFrame()
+                updateViewController()
         }
 
-        override func data(ofType typeName: String) throws -> Data {
+        override func read(from url: URL, ofType typeName: String) throws {
                 switch typeName {
                 case Document.DocumentTypeName:
-                        let text = mRootFrame.encode()
-                        if let data = text.data(using: .utf8) {
-                                return data
-                        } else {
-                                NSLog("[Error] failed to encode at \(#function)")
-                                throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+                        switch ALStackLoader.load(packageDirectory: url) {
+                        case .success(let stack):
+                                mStack = stack
+                                mDidStackLoaded = true
+                                updateViewController()
+                        case .failure(let err):
+                                throw err
                         }
                 default:
                         NSLog("[Error] typename: \(typeName) at \(#function)")
@@ -52,6 +64,12 @@ class Document: NSDocument
                 }
         }
 
+        override func write(to url: URL, ofType typeName: String) throws {
+                NSLog("write to \(url.path)")
+                NSLog("typename: \(typeName)")
+        }
+
+        /*
         override func read(from data: Data, ofType typeName: String) throws {
                 switch typeName {
                 case Document.DocumentTypeName:
@@ -73,14 +91,14 @@ class Document: NSDocument
                         NSLog("[Error] typename: \(typeName) at \(#function)")
                         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
                 }
-        }
+        }*/
 
-        private func updateFrame() {
-                if mDidFrameUpdated {
+        private func updateViewController() {
+                if mDidStackLoaded {
                         if let rctrl = rootViewController() {
-                                rctrl.loadFrame(rootFrame: mRootFrame)
+                                rctrl.loadStack(stack: mStack)
+                                mDidStackLoaded = false
                         }
-                        mDidFrameUpdated = true
                 }
         }
 

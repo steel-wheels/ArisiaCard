@@ -12,8 +12,14 @@ import ArisiaScript
 
 class RootViewController: MITabViewController
 {
-        public func loadFrame(rootFrame rframe: ALFrame) {
-                NSLog("loadFrame at \(#function)")
+        public func loadStack(stack: ALStack) {
+                let idx = currentViewIndex()
+                switch stack.loadFrame(at: idx) {
+                case .success(let frame):
+                        NSLog("DONE: \(frame.encode())")
+                case .failure(let err):
+                        NSLog("[Error] \(MIError.toString(error: err))" )
+                }
         }
 
         override func viewDidLoad() {
