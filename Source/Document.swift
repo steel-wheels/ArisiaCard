@@ -5,7 +5,7 @@
  *   Copyright (C) 2025 Steel Wheels Project
  */
 
-import ArisiaScript
+import ArisiaPlatform
 import MultiDataKit
 import Cocoa
 
@@ -13,22 +13,22 @@ class Document: NSDocument
 {
         static let DocumentTypeName = "com.github.steelwheels.arisiacard.stack"
 
-        private var mStack:             ALStack
+        private var mStack:             ASStack
         private var mDidStackLoaded:    Bool
 
         override init() {
                 if let resdir = FileManager.default.resourceDirectory {
                         let pkgdir = resdir.appending(path: "Stacks/Default.astack")
-                        switch ALStackLoader.load(packageDirectory: pkgdir) {
+                        switch ASStackLoader.load(packageDirectory: pkgdir) {
                         case .success(let stack):
                                 mStack = stack
                         case .failure(let err):
                                 NSLog("[Error] \(MIError.errorToString(error: err)) at \(#function)")
-                                mStack = ALStack(packageDirectory: pkgdir)
+                                mStack = ASStack(packageDirectory: pkgdir)
                         }
                 } else {
                         NSLog("[Error] Failed to get resource directory")
-                        mStack = ALStack(packageDirectory: URL(fileURLWithPath: "/dev/null"))
+                        mStack = ASStack(packageDirectory: URL(fileURLWithPath: "/dev/null"))
                 }
                 mDidStackLoaded = true
                 super.init()
@@ -50,7 +50,7 @@ class Document: NSDocument
         override func read(from url: URL, ofType typeName: String) throws {
                 switch typeName {
                 case Document.DocumentTypeName:
-                        switch ALStackLoader.load(packageDirectory: url) {
+                        switch ASStackLoader.load(packageDirectory: url) {
                         case .success(let stack):
                                 mStack = stack
                                 mDidStackLoaded = true

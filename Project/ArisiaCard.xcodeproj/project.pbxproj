@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05259BA72E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05259BA62E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework */; };
+		05259BA82E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05259BA62E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		055618FE2E0C412300BEB418 /* MultiFrameKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */; };
 		055618FF2E0C412300BEB418 /* MultiFrameKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		055619002E0C412300BEB418 /* MultiDataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */; };
@@ -14,8 +16,6 @@
 		055619022E0C412300BEB418 /* MultiUIKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */; };
 		055619032E0C412300BEB418 /* MultiUIKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		055619062E0C419100BEB418 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055619052E0C419100BEB418 /* StackViewController.swift */; };
-		055F658C2E1EB6FC0073F4F8 /* ArisiaScript.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055F658B2E1EB6FC0073F4F8 /* ArisiaScript.xcframework */; };
-		055F658D2E1EB6FC0073F4F8 /* ArisiaScript.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055F658B2E1EB6FC0073F4F8 /* ArisiaScript.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		059207C82E08189100E19709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207BD2E08189100E19709 /* AppDelegate.swift */; };
 		059207C92E08189100E19709 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C02E08189100E19709 /* Document.swift */; };
 		059207CA2E08189100E19709 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* RootViewController.swift */; };
@@ -31,9 +31,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				055619012E0C412300BEB418 /* MultiDataKit.xcframework in Embed Frameworks */,
-				055F658D2E1EB6FC0073F4F8 /* ArisiaScript.xcframework in Embed Frameworks */,
 				055619032E0C412300BEB418 /* MultiUIKit.xcframework in Embed Frameworks */,
 				055618FF2E0C412300BEB418 /* MultiFrameKit.xcframework in Embed Frameworks */,
+				05259BA82E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05259BA62E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ArisiaPlatform.xcframework; path = ../../../Library/Frameworks/ArisiaPlatform.xcframework; sourceTree = "<group>"; };
 		055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiFrameKit.xcframework; path = ../../../Library/Frameworks/MultiFrameKit.xcframework; sourceTree = "<group>"; };
 		055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiDataKit.xcframework; path = ../../../Library/Frameworks/MultiDataKit.xcframework; sourceTree = "<group>"; };
 		055618FD2E0C412300BEB418 /* MultiUIKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiUIKit.xcframework; path = ../../../Library/Frameworks/MultiUIKit.xcframework; sourceTree = "<group>"; };
@@ -92,9 +93,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				055619002E0C412300BEB418 /* MultiDataKit.xcframework in Frameworks */,
-				055F658C2E1EB6FC0073F4F8 /* ArisiaScript.xcframework in Frameworks */,
 				055619022E0C412300BEB418 /* MultiUIKit.xcframework in Frameworks */,
 				055618FE2E0C412300BEB418 /* MultiFrameKit.xcframework in Frameworks */,
+				05259BA72E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +105,7 @@
 		055618FA2E0C412300BEB418 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05259BA62E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework */,
 				055F658B2E1EB6FC0073F4F8 /* ArisiaScript.xcframework */,
 				055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */,
 				055618FB2E0C412300BEB418 /* MultiFrameKit.xcframework */,

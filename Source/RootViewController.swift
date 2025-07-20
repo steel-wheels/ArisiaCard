@@ -8,11 +8,11 @@
 import MultiUIKit
 import Cocoa
 
-import ArisiaScript
+import ArisiaPlatform
 
 class RootViewController: MITabViewController
 {
-        public func loadStack(stack: ALStack) {
+        public func loadStack(stack: ASStack) {
                 let idx = currentViewIndex()
                 switch stack.loadFrame(at: idx) {
                 case .success(let frame):
