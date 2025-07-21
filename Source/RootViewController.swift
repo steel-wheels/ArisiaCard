@@ -16,7 +16,11 @@ class RootViewController: MITabViewController
                 let idx = currentViewIndex()
                 switch stack.loadFrame(at: idx) {
                 case .success(let frame):
-                        NSLog("DONE: \(frame.encode())")
+                        if let view = self.currentViewController() as? StackViewController {
+                                view.loadFrame(frame: frame)
+                        } else {
+                                NSLog("[Error] Failed to load stack for index \(idx)")
+                        }
                 case .failure(let err):
                         NSLog("[Error] \(MIError.toString(error: err))" )
                 }

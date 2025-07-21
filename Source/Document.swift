@@ -69,30 +69,6 @@ class Document: NSDocument
                 NSLog("typename: \(typeName)")
         }
 
-        /*
-        override func read(from data: Data, ofType typeName: String) throws {
-                switch typeName {
-                case Document.DocumentTypeName:
-                        if let text = String(data: data, encoding: .utf8) {
-                                //NSLog("source: \(text)")
-                                let parser = ALFrameParser()
-                                switch parser.parse(string: text) {
-                                case .success(let frame):
-                                        mRootFrame       = frame
-                                        mDidFrameUpdated = true
-                                case .failure(let err):
-                                        throw err
-                                }
-                        } else {
-                                NSLog("[Error] failed to decode at \(#function)")
-                                throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-                        }
-                default:
-                        NSLog("[Error] typename: \(typeName) at \(#function)")
-                        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-                }
-        }*/
-
         private func updateViewController() {
                 if mDidStackLoaded {
                         if let rctrl = rootViewController() {

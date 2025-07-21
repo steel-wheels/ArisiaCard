@@ -13,10 +13,14 @@ import Foundation
 
 public class StackViewController: MIViewController
 {
-        private var mContext:           MFContext?     = nil
-        private var mConsoleStorage:    MITextStorage? = nil
+        private var mContext:           MFContext?      = nil
+        private var mConsoleStorage:    MITextStorage?  = nil
+        private var mFrameManager:      ASFrameManager? = nil
+        private var mUniqId:            Int = 0
 
         public override func viewDidLoad() {
+                NSLog("viewDidLoad at \(#file)")
+
                 super.viewDidLoad()
 
                 let vm   = JSVirtualMachine()
@@ -31,7 +35,21 @@ public class StackViewController: MIViewController
                  */
                 let stack = ASDropView()
                 stack.contentsView.axis = .vertical
+                stack.droppingCallback = {
+                        [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
+                        if let myself = self {
+                                if let mgr = myself.mFrameManager {
+                                        let uname = "\(name)_\(myself.mUniqId)"
+                                        NSLog("Add dragged frame: \(uname)")
+                                        myself.mUniqId += 1
+                                        mgr.add(point: pt, name: uname, frame: frame)
+                                }
+                        }
+                }
                 root.addArrangedSubView(stack)
+
+                /* FrameManager */
+                mFrameManager = ASFrameManager(targetView: stack.contentsView)
 
                 let button = MIButton()
                 button.title = "Hello"
@@ -58,6 +76,15 @@ public class StackViewController: MIViewController
 
                 /* setup JavaScript context */
                 boot(context: ctxt)
+        }
+
+        public func loadFrame(frame: ASFrame) {
+                NSLog("Load root frame")
+                if let manager = mFrameManager {
+                        manager.add(contentsOf: frame)
+                } else {
+                        NSLog("[Error] FrameManager is not found at \(#file)")
+                }
         }
 
         private func boot(context ctxt: MFContext) {
