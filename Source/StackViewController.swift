@@ -15,11 +15,11 @@ public class StackViewController: MIViewController
 {
         private var mContext:           MFContext?      = nil
         private var mConsoleStorage:    MITextStorage?  = nil
-        private var mFrameManager:      ASFrameManager? = nil
+        private var mFrameManager:      ASFrameManager  = ASFrameManager()
         private var mUniqId:            Int = 0
 
         public override func viewDidLoad() {
-                NSLog("viewDidLoad at \(#file)")
+                //NSLog("viewDidLoad at \(#file)")
 
                 super.viewDidLoad()
 
@@ -38,18 +38,18 @@ public class StackViewController: MIViewController
                 stack.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
                         if let myself = self {
-                                if let mgr = myself.mFrameManager {
-                                        let uname = "\(name)_\(myself.mUniqId)"
-                                        NSLog("Add dragged frame: \(uname)")
-                                        myself.mUniqId += 1
-                                        mgr.add(point: pt, name: uname, frame: frame)
-                                }
+                                let mgr = myself.mFrameManager
+
+                                let uname = "\(name)_\(myself.mUniqId)"
+                                NSLog("Add dragged frame: \(uname)")
+                                myself.mUniqId += 1
+                                mgr.add(point: pt, name: uname, frame: frame)
+
+                                /* requre layout again */
+                                myself.requireLayout()
                         }
                 }
                 root.addArrangedSubView(stack)
-
-                /* FrameManager */
-                mFrameManager = ASFrameManager(targetView: stack.contentsView)
 
                 let button = MIButton()
                 button.title = "Hello"
@@ -79,12 +79,8 @@ public class StackViewController: MIViewController
         }
 
         public func loadFrame(frame: ASFrame) {
-                NSLog("Load root frame")
-                if let manager = mFrameManager {
-                        manager.add(contentsOf: frame)
-                } else {
-                        NSLog("[Error] FrameManager is not found at \(#file)")
-                }
+                //NSLog("Load root frame")
+                mFrameManager.add(contentsOf: frame)
         }
 
         private func boot(context ctxt: MFContext) {
@@ -95,5 +91,10 @@ public class StackViewController: MIViewController
 
                 /* set "console" */
                 MFConsole.boot(storage: storage, context: ctxt)
+        }
+
+        open override func viewWillLayout() {
+                super.viewWillLayout()
+                NSLog("viewWillLayout")
         }
 }
