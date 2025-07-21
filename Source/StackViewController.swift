@@ -5,6 +5,7 @@
  *   Copyright (C) 2025 Steel Wheels Project
  */
 
+import ArisiaPlatform
 import MultiUIKit
 import MultiFrameKit
 import JavaScriptCore
@@ -28,7 +29,7 @@ public class StackViewController: MIViewController
                 /*
                  * Add views for stack
                  */
-                let stack = MFDropView()
+                let stack = ASDropView()
                 stack.contentsView.axis = .vertical
                 root.addArrangedSubView(stack)
 
