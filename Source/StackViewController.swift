@@ -23,10 +23,6 @@ public class StackViewController: MIViewController
 
                 super.viewDidLoad()
 
-                let vm   = JSVirtualMachine()
-                let ctxt = MFContext(virtualMachine: vm)
-                mContext = ctxt
-
                 let root = MIStack()
                 root.axis = .vertical
 
@@ -73,14 +69,24 @@ public class StackViewController: MIViewController
 
                 self.view = root
                 //root.setFrameSize(NSSize(width: 320, height: 240))
-
-                /* setup JavaScript context */
-                boot(context: ctxt)
         }
 
         public func loadFrame(frame: ASFrame) {
                 //NSLog("Load root frame")
                 mFrameManager.add(contentsOf: frame)
+        }
+
+        open override func viewWillLayout() {
+                super.viewWillLayout()
+                NSLog("viewWillLayout")
+
+                /* allocate JSContext */
+                let vm   = JSVirtualMachine()
+                let ctxt = MFContext(virtualMachine: vm)
+                mContext = ctxt
+
+                /* setup JavaScript context */
+                boot(context: ctxt)
         }
 
         private func boot(context ctxt: MFContext) {
@@ -91,10 +97,5 @@ public class StackViewController: MIViewController
 
                 /* set "console" */
                 MFConsole.boot(storage: storage, context: ctxt)
-        }
-
-        open override func viewWillLayout() {
-                super.viewWillLayout()
-                NSLog("viewWillLayout")
         }
 }
