@@ -13,9 +13,12 @@ import Foundation
 
 public class StackViewController: MIViewController
 {
-        private var mContext:           MFContext?      = nil
-        private var mConsoleStorage:    MITextStorage?  = nil
-        private var mFrameManager:      ASFrameManager  = ASFrameManager()
+        private var mContext:           MFContext?              = nil
+        private var mVirtualMachine:    JSVirtualMachine        = JSVirtualMachine()
+        private var mConsoleStorage:    MITextStorage?          = nil
+        private var mFrameView:         MFStack?                = nil
+        private var mFrameManager:      ASFrameManager          = ASFrameManager()
+        private var mDoUpdateView:      Bool                    = true
         private var mUniqId:            Int = 0
 
         public override func viewDidLoad() {
@@ -23,15 +26,18 @@ public class StackViewController: MIViewController
 
                 super.viewDidLoad()
 
-                let root = MIStack()
+                let ctxt = MFContext(virtualMachine: mVirtualMachine)
+                mContext = ctxt
+
+                let root = MFStack(context: ctxt)
                 root.axis = .vertical
 
                 /*
                  * Add views for stack
                  */
-                let stack = ASDropView()
-                stack.contentsView.axis = .vertical
-                stack.droppingCallback = {
+                let dropview = ASDropView(context: ctxt)
+                dropview.contentsView.axis = .vertical
+                dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
                         if let myself = self {
                                 let mgr = myself.mFrameManager
@@ -42,19 +48,21 @@ public class StackViewController: MIViewController
                                 mgr.add(point: pt, name: uname, frame: frame)
 
                                 /* requre layout again */
+                                myself.mDoUpdateView = true
                                 myself.requireLayout()
                         }
                 }
-                root.addArrangedSubView(stack)
+                root.addArrangedSubView(dropview)
 
-                let button = MIButton()
-                button.title = "Hello"
-                stack.contentsView.addArrangedSubView(button)
+                /* allocate frame view */
+                let frameview = MFStack(context: ctxt)
+                dropview.contentsView.addArrangedSubView(frameview)
+                mFrameView = frameview
 
                 /*
                  * Add views for development
                  */
-                let devbox = MIStack()
+                let devbox = MFStack(context: ctxt)
                 devbox.axis = .horizontal
                 root.addArrangedSubView(devbox)
 
@@ -74,28 +82,32 @@ public class StackViewController: MIViewController
         public func loadFrame(frame: ASFrame) {
                 //NSLog("Load root frame")
                 mFrameManager.add(contentsOf: frame)
+                mDoUpdateView = true
+
+                /* requre layout again */
+                self.requireLayout()
         }
 
         open override func viewWillLayout() {
                 super.viewWillLayout()
-                NSLog("viewWillLayout")
 
-                /* allocate JSContext */
-                let vm   = JSVirtualMachine()
-                let ctxt = MFContext(virtualMachine: vm)
-                mContext = ctxt
+                if mDoUpdateView {
+                        NSLog("viewWillLayout")
 
-                /* setup JavaScript context */
-                boot(context: ctxt)
-        }
+                        if let stack = mFrameView, let ctxt = mContext, let strg = mConsoleStorage {
+                                let frame = mFrameManager.rootFrame
+                                NSLog("Compile: " + frame.encode())
 
-        private func boot(context ctxt: MFContext) {
-                guard let storage = mConsoleStorage else {
-                        NSLog("[Error] Parameter is NOT set")
-                        return
+                                stack.removeAllSubviews()
+                                let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg)
+                                if let err = compiler.compile(frame: frame, into: stack) {
+                                        NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
+                                }
+                        } else {
+                                NSLog("[Error] No root view at \(#function)")
+                        }
+
+                        mDoUpdateView = false
                 }
-
-                /* set "console" */
-                MFConsole.boot(storage: storage, context: ctxt)
         }
 }
