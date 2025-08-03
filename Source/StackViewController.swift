@@ -22,6 +22,7 @@ public class StackViewController: MIViewController
         private var mUniqId:            Int = 0
 
         public override func viewDidLoad() {
+                var fid: Int = 0
                 //NSLog("viewDidLoad at \(#file)")
 
                 super.viewDidLoad()
@@ -29,13 +30,14 @@ public class StackViewController: MIViewController
                 let ctxt = MFContext(virtualMachine: mVirtualMachine)
                 mContext = ctxt
 
-                let root = MFStack(context: ctxt)
+                let root = MFStack(context: ctxt, frameId: fid)
                 root.axis = .vertical
+                fid += 1
 
                 /*
                  * Add views for stack
                  */
-                let dropview = ASDropView(context: ctxt)
+                let dropview = ASDropView(context: ctxt, frameId: fid)
                 dropview.contentsView.axis = .vertical
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
@@ -53,18 +55,21 @@ public class StackViewController: MIViewController
                         }
                 }
                 root.addArrangedSubView(dropview)
+                fid += 1
 
                 /* allocate frame view */
-                let frameview = MFStack(context: ctxt)
+                let frameview = MFStack(context: ctxt, frameId: fid)
                 dropview.contentsView.addArrangedSubView(frameview)
                 mFrameView = frameview
+                fid += 1
 
                 /*
                  * Add views for development
                  */
-                let devbox = MFStack(context: ctxt)
+                let devbox = MFStack(context: ctxt, frameId: fid)
                 devbox.axis = .horizontal
                 root.addArrangedSubView(devbox)
+                fid += 1
 
                 let buttonimg = MIIconView()
                 buttonimg.set(symbol: .buttonHorizontalTopPress, size: .regular)
