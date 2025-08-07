@@ -93,6 +93,15 @@ public class StackViewController: MIViewController
                 self.requireLayout()
         }
 
+        open override func acceptViewEvent(_ event: MIViewEvent) {
+                NSLog("acceptViewEvent: \(event.tag) at \(#function)")
+                if let frame = mFrameManager.search(coreTag: event.tag) {
+                        NSLog("acceptViewEvent: \(frame.encode())")
+                } else {
+                        NSLog("[Error] The frame is not found: \(event.tag)")
+                }
+        }
+
         open override func viewWillLayout() {
                 super.viewWillLayout()
 
