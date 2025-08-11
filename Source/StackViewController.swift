@@ -16,6 +16,7 @@ public class StackViewController: MIViewController
         private var mContext:           MFContext?              = nil
         private var mVirtualMachine:    JSVirtualMachine        = JSVirtualMachine()
         private var mConsoleStorage:    MITextStorage?          = nil
+        private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameView:         MFStack?                = nil
         private var mFrameManager:      ASFrameManager          = ASFrameManager()
         private var mDoUpdateView:      Bool                    = true
@@ -68,12 +69,18 @@ public class StackViewController: MIViewController
                  */
                 let devbox = MFStack(context: ctxt, frameId: fid)
                 devbox.axis = .horizontal
+                devbox.set(contentSize: MIContentSize(width:  .ratioToScreen(0.5),
+                                                      height: .ratioToScreen(0.5)))
                 root.addArrangedSubView(devbox)
                 fid += 1
 
                 let buttonimg = MIIconView()
                 buttonimg.set(symbol: .buttonHorizontalTopPress, size: .regular)
                 devbox.addArrangedSubView(buttonimg)
+
+                let editor = ASFrameEditor()
+                devbox.addArrangedSubView(editor)
+                mFrameEditor = editor
 
                 let console = MITextView()
                 console.isEditable = false
@@ -95,8 +102,11 @@ public class StackViewController: MIViewController
 
         open override func acceptViewEvent(_ event: MIViewEvent) {
                 NSLog("acceptViewEvent: \(event.tag) at \(#function)")
-                if let frame = mFrameManager.search(coreTag: event.tag) {
-                        NSLog("acceptViewEvent: \(frame.encode())")
+                if let frm = mFrameManager.search(coreTag: event.tag) {
+                        if let editor = mFrameEditor {
+                                NSLog("acceptViewEvent: use frame \(frm.encode())")
+                                editor.set(target: frm)
+                        }
                 } else {
                         NSLog("[Error] The frame is not found: \(event.tag)")
                 }
