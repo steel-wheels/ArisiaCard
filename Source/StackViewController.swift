@@ -40,6 +40,8 @@ public class StackViewController: MIViewController
                  */
                 let dropview = ASDropView(context: ctxt, frameId: fid)
                 dropview.contentsView.axis = .vertical
+                dropview.set(contentSize: MIContentSize(width:  .ratioToScreen(0.5),
+                                                        height: .ratioToScreen(0.5)))
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
                         if let myself = self {
@@ -69,8 +71,7 @@ public class StackViewController: MIViewController
                  */
                 let devbox = MFStack(context: ctxt, frameId: fid)
                 devbox.axis = .horizontal
-                devbox.set(contentSize: MIContentSize(width:  .ratioToScreen(0.5),
-                                                      height: .ratioToScreen(0.5)))
+                devbox.distribution = .fillEqually
                 root.addArrangedSubView(devbox)
                 fid += 1
 
