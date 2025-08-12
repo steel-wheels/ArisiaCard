@@ -31,17 +31,24 @@ public class StackViewController: MIViewController
                 let ctxt = MFContext(virtualMachine: mVirtualMachine)
                 mContext = ctxt
 
-                let root = MFStack(context: ctxt, frameId: fid)
+                let root = MFStack(context: ctxt, frameId: fid) ; fid += 1
                 root.axis = .vertical
-                fid += 1
+                root.set(contentSize: MIContentSize(width: .ratioToScreen(0.5),
+                                                    height: .ratioToScreen(0.5)))
+                self.view = root
+
+                /* Allocate stack0 */
+                let stack0 = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                stack0.axis = .horizontal
+                root.addArrangedSubView(stack0)
 
                 /*
-                 * Add views for stack
+                 * Add drop ro stack0
                  */
                 let dropview = ASDropView(context: ctxt, frameId: fid)
                 dropview.contentsView.axis = .vertical
-                dropview.set(contentSize: MIContentSize(width:  .ratioToScreen(0.5),
-                                                        height: .ratioToScreen(0.5)))
+                dropview.set(contentSize: MIContentSize(width:  .ratioToScreen(0.3),
+                                                        height: .ratioToScreen(0.3)))
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
                         if let myself = self {
@@ -57,39 +64,41 @@ public class StackViewController: MIViewController
                                 myself.requireLayout()
                         }
                 }
-                root.addArrangedSubView(dropview)
-                fid += 1
+                stack0.addArrangedSubView(dropview) ; fid += 1
 
                 /* allocate frame view */
-                let frameview = MFStack(context: ctxt, frameId: fid)
+                let frameview = MFStack(context: ctxt, frameId: fid) ; fid += 1
                 dropview.contentsView.addArrangedSubView(frameview)
                 mFrameView = frameview
                 fid += 1
 
                 /*
-                 * Add views for development
+                 * Add frame editor view ro stack0
                  */
-                let devbox = MFStack(context: ctxt, frameId: fid)
-                devbox.axis = .horizontal
-                devbox.distribution = .fillEqually
-                root.addArrangedSubView(devbox)
-                fid += 1
-
-                let buttonimg = MIIconView()
-                buttonimg.set(symbol: .buttonHorizontalTopPress, size: .regular)
-                devbox.addArrangedSubView(buttonimg)
-
                 let editor = ASFrameEditor()
-                devbox.addArrangedSubView(editor)
+                stack0.addArrangedSubView(editor)
                 mFrameEditor = editor
 
+                /* allocate stack view */
+                let stack1 = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                stack1.axis = .horizontal
+                stack1.distribution = .fillEqually
+                root.addArrangedSubView(stack1)
+
+                /*
+                 * Add button image to stack1
+                 */
+                let buttonimg = MIIconView()
+                buttonimg.set(symbol: .buttonHorizontalTopPress, size: .regular)
+                stack1.addArrangedSubView(buttonimg)
+
+                /*
+                 * Add console to stack1
+                 */
                 let console = MITextView()
                 console.isEditable = false
-                devbox.addArrangedSubView(console)
+                stack1.addArrangedSubView(console)
                 mConsoleStorage = console.textStorage
-
-                self.view = root
-                //root.setFrameSize(NSSize(width: 320, height: 240))
         }
 
         public func loadFrame(frame: ASFrame) {
@@ -106,7 +115,7 @@ public class StackViewController: MIViewController
                 if let frm = mFrameManager.search(coreTag: event.tag) {
                         if let editor = mFrameEditor {
                                 NSLog("acceptViewEvent: use frame \(frm.encode())")
-                                editor.set(target: frm)
+                                editor.set(target: frm, width: .ratioToScreen(0.2))
                         }
                 } else {
                         NSLog("[Error] The frame is not found: \(event.tag)")
