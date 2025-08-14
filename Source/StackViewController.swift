@@ -118,6 +118,8 @@ public class StackViewController: MIViewController
                                 editor.set(target: frm, width: .ratioToScreen(0.2), updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
+                                        self.mDoUpdateView = true
+                                        self.requireLayout()
                                 })
                         }
                 } else {
