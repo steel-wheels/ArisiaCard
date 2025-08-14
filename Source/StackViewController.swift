@@ -111,11 +111,14 @@ public class StackViewController: MIViewController
         }
 
         open override func acceptViewEvent(_ event: MIViewEvent) {
-                NSLog("acceptViewEvent: \(event.tag) at \(#function)")
+                //NSLog("acceptViewEvent: \(event.tag) at \(#function)")
                 if let frm = mFrameManager.search(coreTag: event.tag) {
                         if let editor = mFrameEditor {
-                                NSLog("acceptViewEvent: use frame \(frm.encode())")
-                                editor.set(target: frm, width: .ratioToScreen(0.2))
+                                //NSLog("acceptViewEvent: use frame \(frm.encode())")
+                                editor.set(target: frm, width: .ratioToScreen(0.2), updatedCallback: {
+                                        (_ frameid: Int) -> Void in
+                                        NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
+                                })
                         }
                 } else {
                         NSLog("[Error] The frame is not found: \(event.tag)")
