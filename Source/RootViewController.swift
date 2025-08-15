@@ -14,15 +14,14 @@ class RootViewController: MITabViewController
 {
         public func loadStack(stack: ASStack) {
                 let idx = currentViewIndex()
-                switch stack.loadFrame(at: idx) {
-                case .success(let frame):
+                if let frame = stack.frame(at: idx) {
                         if let view = self.currentViewController() as? StackViewController {
                                 view.loadFrame(frame: frame)
                         } else {
                                 NSLog("[Error] Failed to load stack for index \(idx)")
                         }
-                case .failure(let err):
-                        NSLog("[Error] \(MIError.toString(error: err))" )
+                } else {
+                        NSLog("[Error] Invalid frame index at \(#file)" )
                 }
         }
 

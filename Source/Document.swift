@@ -13,22 +13,25 @@ class Document: NSDocument
 {
         static let DocumentTypeName = "com.github.steelwheels.arisiacard.stack"
 
-        private var mStack:             ASStack
+        private var mDocument:          ASDocument
         private var mDidStackLoaded:    Bool
 
         override init() {
                 if let resdir = FileManager.default.resourceDirectory {
                         let pkgdir = resdir.appending(path: "Stacks/Default.astack")
-                        switch ASStackLoader.load(packageDirectory: pkgdir) {
-                        case .success(let stack):
-                                mStack = stack
+                        switch ASDocument.load(packageDirectory: pkgdir) {
+                        case .success(let doc):
+                                mDocument = doc
                         case .failure(let err):
                                 NSLog("[Error] \(MIError.errorToString(error: err)) at \(#function)")
-                                mStack = ASStack(packageDirectory: pkgdir)
+                                let manifest = ASManifest(packageDirectory: pkgdir)
+                                mDocument = ASDocument(manifest: manifest)
                         }
                 } else {
                         NSLog("[Error] Failed to get resource directory")
-                        mStack = ASStack(packageDirectory: URL(fileURLWithPath: "/dev/null"))
+                        let nulldir = URL(filePath: "/dev/null")
+                        let manifest = ASManifest(packageDirectory: nulldir)
+                        mDocument = ASDocument(manifest: manifest)
                 }
                 mDidStackLoaded = true
                 super.init()
@@ -50,9 +53,9 @@ class Document: NSDocument
         override func read(from url: URL, ofType typeName: String) throws {
                 switch typeName {
                 case Document.DocumentTypeName:
-                        switch ASStackLoader.load(packageDirectory: url) {
-                        case .success(let stack):
-                                mStack = stack
+                        switch ASDocument.load(packageDirectory: url) {
+                        case .success(let doc):
+                                mDocument       = doc
                                 mDidStackLoaded = true
                                 updateViewController()
                         case .failure(let err):
@@ -72,7 +75,7 @@ class Document: NSDocument
         private func updateViewController() {
                 if mDidStackLoaded {
                         if let rctrl = rootViewController() {
-                                rctrl.loadStack(stack: mStack)
+                                rctrl.loadStack(stack: mDocument.stack)
                                 mDidStackLoaded = false
                         }
                 }
