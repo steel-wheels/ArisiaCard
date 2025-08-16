@@ -67,9 +67,14 @@ class Document: NSDocument
                 }
         }
 
-        override func write(to url: URL, ofType typeName: String) throws {
-                NSLog("write to \(url.path)")
-                NSLog("typename: \(typeName)")
+        override func save(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType, completionHandler: @escaping ((any Error)?) -> Void) {
+                NSLog("write to \(url.path), typename: \(typeName)")
+                if let err = mDocument.save(to: url) {
+                        NSLog("[Error] \(MIError.errorToString(error: err)) at \(#file)")
+                        completionHandler(err)
+                } else {
+                        completionHandler(nil)
+                }
         }
 
         private func updateViewController() {
