@@ -18,9 +18,18 @@ public class StackViewController: MIViewController
         private var mConsoleStorage:    MITextStorage?          = nil
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameView:         MFStack?                = nil
-        private var mFrameManager:      ASFrameManager          = ASFrameManager()
-        private var mDoUpdateView:      Bool                    = true
+        private var mFrameManager:      ASFrameManager?         = nil
+        private var mDoLayoutView:      Bool                    = true
         private var mUniqId:            Int = 0
+
+        public func loadFrame(frame frm: ASFrame) {
+                //NSLog("Load root frame")
+                mFrameManager = ASFrameManager(frame: frm)
+                mDoLayoutView = true
+
+                /* requre layout again */
+                self.requireLayout()
+        }
 
         public override func viewDidLoad() {
                 var fid: Int = 0
@@ -51,16 +60,14 @@ public class StackViewController: MIViewController
                                                         height: .ratioToScreen(0.3)))
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
-                        if let myself = self {
-                                let mgr = myself.mFrameManager
-
+                        if let myself = self, let mgr = myself.mFrameManager {
                                 let uname = "\(name)_\(myself.mUniqId)"
                                 NSLog("Add dragged frame: \(uname)")
                                 myself.mUniqId += 1
                                 mgr.add(point: pt, name: uname, frame: frame)
 
                                 /* requre layout again */
-                                myself.mDoUpdateView = true
+                                myself.mDoLayoutView = true
                                 myself.requireLayout()
                         }
                 }
@@ -101,24 +108,20 @@ public class StackViewController: MIViewController
                 mConsoleStorage = console.textStorage
         }
 
-        public func loadFrame(frame: ASFrame) {
-                //NSLog("Load root frame")
-                mFrameManager.add(contentsOf: frame)
-                mDoUpdateView = true
-
-                /* requre layout again */
-                self.requireLayout()
-        }
-
         open override func acceptViewEvent(_ event: MIViewEvent) {
+                guard let mgr = mFrameManager else {
+                        NSLog("[Error] No manager")
+                        return
+                }
+
                 //NSLog("acceptViewEvent: \(event.tag) at \(#function)")
-                if let frm = mFrameManager.search(coreTag: event.tag) {
+                if let frm = mgr.search(coreTag: event.tag) {
                         if let editor = mFrameEditor {
                                 //NSLog("acceptViewEvent: use frame \(frm.encode())")
                                 editor.set(target: frm, width: .ratioToScreen(0.2), updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
-                                        self.mDoUpdateView = true
+                                        self.mDoLayoutView = true
                                         self.requireLayout()
                                 })
                         }
@@ -130,23 +133,30 @@ public class StackViewController: MIViewController
         open override func viewWillLayout() {
                 super.viewWillLayout()
 
-                if mDoUpdateView {
-                        NSLog("viewWillLayout")
+                if(mDoLayoutView){
+                        mDoLayoutView = false // do layout
+                } else {
+                        return // needless layout
+                }
 
-                        if let stack = mFrameView, let ctxt = mContext, let strg = mConsoleStorage {
-                                let frame = mFrameManager.rootFrame
-                                NSLog("Compile: " + frame.encode())
+                guard let rootfrm = mFrameManager?.rootFrame else {
+                        NSLog("[Error] No frame manager at \(#function)")
+                        return
+                }
+
+                NSLog("viewWillLayout")
+
+                if let stack = mFrameView, let ctxt = mContext, let strg = mConsoleStorage {
+                                NSLog("Compile: " + rootfrm.encode())
 
                                 stack.removeAllSubviews()
                                 let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg)
-                                if let err = compiler.compile(frame: frame, into: stack) {
+                                if let err = compiler.compile(frame: rootfrm, into: stack) {
                                         NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
                                 }
                         } else {
                                 NSLog("[Error] No root view at \(#function)")
-                        }
-
-                        mDoUpdateView = false
                 }
+
         }
 }
