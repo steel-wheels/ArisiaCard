@@ -96,7 +96,7 @@ public class StackViewController: MIViewController
                  * Add collection view for GUI parts
                  */
                 let iconsview = MICollectionView()
-                iconsview.set(symbols: [.buttonHorizontalTopPress, .photo])
+                iconsview.set(symbols: [.buttonHorizontalTopPress, .photo], size: .regular)
                 stack1.addArrangedSubView(iconsview)
 
                 /*
