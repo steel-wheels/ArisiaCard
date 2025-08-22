@@ -93,11 +93,11 @@ public class StackViewController: MIViewController
                 root.addArrangedSubView(stack1)
 
                 /*
-                 * Add button image to stack1
+                 * Add collection view for GUI parts
                  */
-                let buttonimg = MIIconView()
-                buttonimg.set(symbol: .buttonHorizontalTopPress, size: .regular)
-                stack1.addArrangedSubView(buttonimg)
+                let iconsview = MICollectionView()
+                iconsview.set(symbols: [.buttonHorizontalTopPress, .photo])
+                stack1.addArrangedSubView(iconsview)
 
                 /*
                  * Add console to stack1
