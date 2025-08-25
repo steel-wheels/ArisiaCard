@@ -24,14 +24,14 @@ class Document: NSDocument
                                 mDocument = doc
                         case .failure(let err):
                                 NSLog("[Error] \(MIError.errorToString(error: err)) at \(#function)")
-                                let manifest = ASManifest(packageDirectory: pkgdir)
-                                mDocument = ASDocument(manifest: manifest)
+                                let resource = ASResource(packageDirectory: pkgdir)
+                                mDocument = ASDocument(resource: resource)
                         }
                 } else {
                         NSLog("[Error] Failed to get resource directory")
-                        let nulldir = URL(filePath: "/dev/null")
-                        let manifest = ASManifest(packageDirectory: nulldir)
-                        mDocument = ASDocument(manifest: manifest)
+                        let nulldir  = URL(filePath: "/dev/null")
+                        let resource = ASResource(packageDirectory: nulldir)
+                        mDocument = ASDocument(resource: resource)
                 }
                 mDidStackLoaded = true
                 super.init()
@@ -80,7 +80,8 @@ class Document: NSDocument
         private func updateViewController() {
                 if mDidStackLoaded {
                         if let rctrl = rootViewController() {
-                                rctrl.loadStack(stack: mDocument.stack)
+                                let res = mDocument.resource
+                                rctrl.loadStack(stack: mDocument.stack, resource: mDocument.resource)
                                 mDidStackLoaded = false
                         }
                 }

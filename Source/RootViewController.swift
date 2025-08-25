@@ -12,11 +12,11 @@ import ArisiaPlatform
 
 class RootViewController: MITabViewController
 {
-        public func loadStack(stack: ASStack) {
+        public func loadStack(stack: ASStack, resource res: ASResource) {
                 let idx = currentViewIndex()
                 if let frame = stack.frame(at: idx) {
                         if let view = self.currentViewController() as? StackViewController {
-                                view.loadFrame(frame: frame)
+                                view.loadFrame(frame: frame, resource: res)
                         } else {
                                 NSLog("[Error] Failed to load stack for index \(idx)")
                         }

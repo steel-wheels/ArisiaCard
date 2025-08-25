@@ -19,12 +19,14 @@ public class StackViewController: MIViewController
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameView:         MFStack?                = nil
         private var mFrameManager:      ASFrameManager?         = nil
+        private var mResource:          ASResource?             = nil
         private var mDoLayoutView:      Bool                    = true
         private var mUniqId:            Int = 0
 
-        public func loadFrame(frame frm: ASFrame) {
+        public func loadFrame(frame frm: ASFrame, resource res: ASResource) {
                 //NSLog("Load root frame")
                 mFrameManager = ASFrameManager(frame: frm)
+                mResource     = res
                 mDoLayoutView = true
 
                 /* requre layout again */
@@ -147,15 +149,19 @@ public class StackViewController: MIViewController
                 NSLog("viewWillLayout")
 
                 if let stack = mFrameView, let ctxt = mContext, let strg = mConsoleStorage {
-                                NSLog("Compile: " + rootfrm.encode())
-
+                        NSLog("Compile: " + rootfrm.encode())
+                        if let res = mResource {
                                 stack.removeAllSubviews()
-                                let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg)
+                                let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg, resource:  res)
                                 if let err = compiler.compile(frame: rootfrm, into: stack) {
                                         NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
                                 }
                         } else {
-                                NSLog("[Error] No root view at \(#function)")
+                                NSLog("[Error] No resource at \(#function)")
+                        }
+
+                } else {
+                        NSLog("[Error] No root view at \(#function)")
                 }
 
         }
