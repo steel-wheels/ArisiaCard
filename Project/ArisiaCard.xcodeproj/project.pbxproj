@@ -19,8 +19,9 @@
 		059207C82E08189100E19709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207BD2E08189100E19709 /* AppDelegate.swift */; };
 		059207C92E08189100E19709 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C02E08189100E19709 /* Document.swift */; };
 		059207CA2E08189100E19709 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* RootViewController.swift */; };
-		05E11BA52E23DFE1000FBA96 /* home.as in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E11BA12E23C817000FBA96 /* home.as */; };
-		05E11BA62E23DFE1000FBA96 /* manifest.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E11BA22E23C817000FBA96 /* manifest.json */; };
+		05E65FF12E5DF819009C157E /* no-image.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E65FEE2E5DF5CD009C157E /* no-image.png */; };
+		05E65FF22E5DF819009C157E /* home.as in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E11BA12E23C817000FBA96 /* home.as */; };
+		05E65FF32E5DF819009C157E /* manifest.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E11BA22E23C817000FBA96 /* manifest.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,8 +45,9 @@
 			dstPath = Stacks/Default.astack;
 			dstSubfolderSpec = 7;
 			files = (
-				05E11BA52E23DFE1000FBA96 /* home.as in CopyFiles */,
-				05E11BA62E23DFE1000FBA96 /* manifest.json in CopyFiles */,
+				05E65FF12E5DF819009C157E /* no-image.png in CopyFiles */,
+				05E65FF22E5DF819009C157E /* home.as in CopyFiles */,
+				05E65FF32E5DF819009C157E /* manifest.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +66,7 @@
 		05D7EB652E08185D004272CC /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E11BA12E23C817000FBA96 /* home.as */ = {isa = PBXFileReference; lastKnownFileType = text; path = home.as; sourceTree = "<group>"; };
 		05E11BA22E23C817000FBA96 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		05E65FEE2E5DF5CD009C157E /* no-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -173,6 +176,7 @@
 		05E11B9F2E23C61F000FBA96 /* Default.astack */ = {
 			isa = PBXGroup;
 			children = (
+				05E65FEE2E5DF5CD009C157E /* no-image.png */,
 				05E11BA12E23C817000FBA96 /* home.as */,
 				05E11BA22E23C817000FBA96 /* manifest.json */,
 			);

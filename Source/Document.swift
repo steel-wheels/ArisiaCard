@@ -80,7 +80,6 @@ class Document: NSDocument
         private func updateViewController() {
                 if mDidStackLoaded {
                         if let rctrl = rootViewController() {
-                                let res = mDocument.resource
                                 rctrl.loadStack(stack: mDocument.stack, resource: mDocument.resource)
                                 mDidStackLoaded = false
                         }
