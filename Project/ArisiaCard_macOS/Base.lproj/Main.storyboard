@@ -536,8 +536,10 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="1280" height="720"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="1280" height="720"/>
+                        <value key="maxSize" type="size" width="1280" height="720"/>
                         <connections>
                             <outlet property="delegate" destination="jGA-0Y-lOj" id="98r-iN-zZc"/>
                         </connections>
@@ -558,7 +560,7 @@
                         <tabViewItem identifier="" id="1wg-4I-kx3"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="tQm-NY-fCC">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
                         <connections>
@@ -579,13 +581,47 @@
             <objects>
                 <viewController id="ynR-Yj-nG7" customClass="StackViewController" customModule="ArisiaCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XpD-Z0-CTt">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="XDy-EJ-ecG" customClass="MIStack" customModule="MultiUIKit">
+                                <rect key="frame" x="0.0" y="192" width="1024" height="528"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="2Bh-zg-gUr" customClass="MIStack" customModule="MultiUIKit">
+                                <rect key="frame" x="1024" y="192" width="256" height="528"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="rlX-1d-9MD"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="6Mf-CU-G9W" customClass="MIStack" customModule="MultiUIKit">
+                                <rect key="frame" x="0.0" y="0.0" width="1280" height="192"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="5Sz-yh-iNm"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6Mf-CU-G9W" firstAttribute="leading" secondItem="XpD-Z0-CTt" secondAttribute="leading" id="64J-Gu-LYf"/>
+                            <constraint firstItem="XDy-EJ-ecG" firstAttribute="top" secondItem="XpD-Z0-CTt" secondAttribute="top" id="7Sq-Mm-iMq"/>
+                            <constraint firstItem="2Bh-zg-gUr" firstAttribute="leading" secondItem="XDy-EJ-ecG" secondAttribute="trailing" id="I00-Ey-QRd"/>
+                            <constraint firstAttribute="bottom" secondItem="6Mf-CU-G9W" secondAttribute="bottom" id="J1p-rx-iS1"/>
+                            <constraint firstItem="XDy-EJ-ecG" firstAttribute="leading" secondItem="XpD-Z0-CTt" secondAttribute="leading" id="XgT-St-vRW"/>
+                            <constraint firstAttribute="trailing" secondItem="2Bh-zg-gUr" secondAttribute="trailing" id="hSH-7f-M5K"/>
+                            <constraint firstItem="6Mf-CU-G9W" firstAttribute="top" secondItem="2Bh-zg-gUr" secondAttribute="bottom" id="lNr-Kp-ReN"/>
+                            <constraint firstAttribute="trailing" secondItem="6Mf-CU-G9W" secondAttribute="trailing" id="neF-Q3-GSD"/>
+                            <constraint firstItem="6Mf-CU-G9W" firstAttribute="top" secondItem="XDy-EJ-ecG" secondAttribute="bottom" id="vxd-JM-9To"/>
+                            <constraint firstItem="2Bh-zg-gUr" firstAttribute="top" secondItem="XpD-Z0-CTt" secondAttribute="top" id="wpI-7I-aW2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mEditView" destination="2Bh-zg-gUr" id="7TV-fP-FBL"/>
+                        <outlet property="mMainView" destination="XDy-EJ-ecG" id="VwJ-oD-moC"/>
+                        <outlet property="mToolView" destination="6Mf-CU-G9W" id="H1p-1s-2KD"/>
+                    </connections>
                 </viewController>
                 <customObject id="mQC-x7-ea8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="55" y="1212"/>
+            <point key="canvasLocation" x="55" y="1485"/>
         </scene>
     </scenes>
 </document>

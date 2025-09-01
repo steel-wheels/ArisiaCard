@@ -13,11 +13,15 @@ import Foundation
 
 public class StackViewController: MIViewController
 {
+        @IBOutlet weak var mMainView: MIStack!
+        @IBOutlet weak var mEditView: MIStack!
+        @IBOutlet weak var mToolView: MIStack!
+        
         private var mContext:           MFContext?              = nil
         private var mVirtualMachine:    JSVirtualMachine        = JSVirtualMachine()
         private var mConsoleStorage:    MITextStorage?          = nil
-        private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameView:         MFStack?                = nil
+        private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameManager:      ASFrameManager?         = nil
         private var mResource:          ASResource?             = nil
         private var mDoLayoutView:      Bool                    = true
@@ -42,24 +46,20 @@ public class StackViewController: MIViewController
                 let ctxt = MFContext(virtualMachine: mVirtualMachine)
                 mContext = ctxt
 
-                let root = MFStack(context: ctxt, frameId: fid) ; fid += 1
-                root.axis = .vertical
-                root.set(contentSize: MIContentSize(width: .ratioToScreen(0.5),
-                                                    height: .ratioToScreen(0.5)))
-                self.view = root
+                fid = allocateMainView(context: ctxt, frameId: fid)
+                fid = allocateEditView(context: ctxt, frameId: fid)
+                fid = allocateToolView(context: ctxt, frameId: fid)
+        }
 
-                /* Allocate stack0 */
-                let stack0 = MFStack(context: ctxt, frameId: fid) ; fid += 1
-                stack0.axis = .horizontal
-                root.addArrangedSubView(stack0)
+        private func allocateMainView(context ctxt: MFContext, frameId frameid: Int) -> Int {
+                var fid = frameid
 
-                /*
-                 * Add drop ro stack0
-                 */
+                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                mview.axis = .vertical
+                mMainView.addArrangedSubView(mview)
+
                 let dropview = ASDropView(context: ctxt, frameId: fid)
                 dropview.contentsView.axis = .vertical
-                dropview.set(contentSize: MIContentSize(width:  .ratioToScreen(0.3),
-                                                        height: .ratioToScreen(0.3)))
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
                         if let myself = self, let mgr = myself.mFrameManager {
@@ -73,41 +73,48 @@ public class StackViewController: MIViewController
                                 myself.requireLayout()
                         }
                 }
-                stack0.addArrangedSubView(dropview) ; fid += 1
+                mview.addArrangedSubView(dropview) ; fid += 1
 
                 /* allocate frame view */
                 let frameview = MFStack(context: ctxt, frameId: fid) ; fid += 1
                 dropview.contentsView.addArrangedSubView(frameview)
                 mFrameView = frameview
-                fid += 1
 
-                /*
-                 * Add frame editor view ro stack0
-                 */
+                return fid
+        }
+
+        private func allocateEditView(context ctxt: MFContext, frameId frameid: Int) -> Int {
+                var fid = frameid
+
+                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                mview.axis = .vertical
+                mEditView.addArrangedSubView(mview)
+
                 let editor = ASFrameEditor()
-                stack0.addArrangedSubView(editor)
+                mview.addArrangedSubView(editor)
                 mFrameEditor = editor
 
-                /* allocate stack view */
-                let stack1 = MFStack(context: ctxt, frameId: fid) ; fid += 1
-                stack1.axis = .horizontal
-                stack1.distribution = .fillEqually
-                root.addArrangedSubView(stack1)
+                return fid
+        }
 
-                /*
-                 * Add collection view for GUI parts
-                 */
+        private func allocateToolView(context ctxt: MFContext, frameId frameid: Int) -> Int {
+                var fid = frameid
+
+                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                mview.axis = .horizontal
+                mview.distribution = .fillEqually
+                mToolView.addArrangedSubView(mview)
+
                 let iconsview = MICollectionView()
                 iconsview.set(symbols: [.buttonHorizontalTopPress, .photo], size: .regular)
-                stack1.addArrangedSubView(iconsview)
+                mview.addArrangedSubView(iconsview)
 
-                /*
-                 * Add console to stack1
-                 */
                 let console = MITextView()
                 console.isEditable = false
-                stack1.addArrangedSubView(console)
+                mview.addArrangedSubView(console)
                 mConsoleStorage = console.textStorage
+
+                return fid
         }
 
         open override func acceptViewEvent(_ event: MIViewEvent) {
@@ -120,7 +127,7 @@ public class StackViewController: MIViewController
                 if let frm = mgr.search(coreTag: event.tag) {
                         if let editor = mFrameEditor {
                                 //NSLog("acceptViewEvent: use frame \(frm.encode())")
-                                editor.set(target: frm, width: .ratioToScreen(0.2), updatedCallback: {
+                                editor.set(target: frm, updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
                                         self.mDoLayoutView = true
@@ -142,7 +149,7 @@ public class StackViewController: MIViewController
                 }
 
                 guard let rootfrm = mFrameManager?.rootFrame else {
-                        NSLog("[Error] No frame manager at \(#function)")
+                        NSLog("[Error] No frame manager at \(#file)")
                         return
                 }
 
