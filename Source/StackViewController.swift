@@ -24,14 +24,12 @@ public class StackViewController: MIViewController
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameManager:      ASFrameManager?         = nil
         private var mResource:          ASResource?             = nil
-        private var mDoLayoutView:      Bool                    = true
         private var mUniqId:            Int = 0
 
         public func loadFrame(frame frm: ASFrame, resource res: ASResource) {
                 //NSLog("Load root frame")
                 mFrameManager = ASFrameManager(frame: frm)
                 mResource     = res
-                mDoLayoutView = true
 
                 /* requre layout again */
                 self.requireLayout()
@@ -69,7 +67,6 @@ public class StackViewController: MIViewController
                                 mgr.add(point: pt, name: uname, frame: frame)
 
                                 /* requre layout again */
-                                myself.mDoLayoutView = true
                                 myself.requireLayout()
                         }
                 }
@@ -79,6 +76,12 @@ public class StackViewController: MIViewController
                 let frameview = MFStack(context: ctxt, frameId: fid) ; fid += 1
                 dropview.contentsView.addArrangedSubView(frameview)
                 mFrameView = frameview
+
+                /* fix the size of main view */
+                let framesize = mMainView.frame.size
+                let fixsize   = MIContentSize(width:  .immediate(framesize.width),
+                                              height: .immediate(framesize.height))
+                mMainView.set(contentSize: fixsize)
 
                 return fid
         }
@@ -130,7 +133,6 @@ public class StackViewController: MIViewController
                                 editor.set(target: frm, updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
-                                        self.mDoLayoutView = true
                                         self.requireLayout()
                                 })
                         }
@@ -142,19 +144,12 @@ public class StackViewController: MIViewController
         open override func viewWillLayout() {
                 super.viewWillLayout()
 
-                if(mDoLayoutView){
-                        mDoLayoutView = false // do layout
-                } else {
-                        return // needless layout
-                }
-
                 guard let rootfrm = mFrameManager?.rootFrame else {
                         NSLog("[Error] No frame manager at \(#file)")
                         return
                 }
 
                 NSLog("viewWillLayout")
-
                 if let stack = mFrameView, let ctxt = mContext, let strg = mConsoleStorage {
                         NSLog("Compile: " + rootfrm.encode())
                         if let res = mResource {
@@ -170,6 +165,5 @@ public class StackViewController: MIViewController
                 } else {
                         NSLog("[Error] No root view at \(#function)")
                 }
-
         }
 }
