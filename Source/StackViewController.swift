@@ -20,7 +20,7 @@ public class StackViewController: MIViewController
         private var mContext:           MFContext?              = nil
         private var mVirtualMachine:    JSVirtualMachine        = JSVirtualMachine()
         private var mConsoleStorage:    MITextStorage?          = nil
-        private var mFrameView:         MFStack?                = nil
+        private var mFrameView:         ASBox?                  = nil
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameManager:      ASFrameManager?         = nil
         private var mResource:          ASResource?             = nil
@@ -52,14 +52,31 @@ public class StackViewController: MIViewController
         private func allocateMainView(context ctxt: MFContext, frameId frameid: Int) -> Int {
                 var fid = frameid
 
-                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                let mview = ASBox(context: ctxt, frameId: fid) ; fid += 1
                 mview.axis = .vertical
                 mMainView.addArrangedSubView(mview)
 
-                let dropview = ASDropView(context: ctxt, frameId: fid)
-                dropview.contentsView.axis = .vertical
-                dropview.droppingCallback = {
+                let dropview = ASBox(context: ctxt, frameId: fid)
+                dropview.axis = .vertical
+                dropview.set(droppingCallback: {
+                        [weak self] (_ stack: MIStack, _ point: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
+                        if let myself = self, let mgr = myself.mFrameManager {
+                                NSLog("Dragged item: (\(point.x), \(point.y))")
+
+                                let uname = "\(name)_\(myself.mUniqId)"
+                                NSLog("Add dragged frame: \(uname)")
+                                myself.mUniqId += 1
+                                mgr.add(point: point, name: uname, frame: frame)
+
+                                /* requre layout again */
+                                myself.requireLayout()
+                        }
+                })
+
+                /*
+                droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
+
                         if let myself = self, let mgr = myself.mFrameManager {
                                 let uname = "\(name)_\(myself.mUniqId)"
                                 NSLog("Add dragged frame: \(uname)")
@@ -70,11 +87,12 @@ public class StackViewController: MIViewController
                                 myself.requireLayout()
                         }
                 }
+                 */
                 mview.addArrangedSubView(dropview) ; fid += 1
 
                 /* allocate frame view */
-                let frameview = MFStack(context: ctxt, frameId: fid) ; fid += 1
-                dropview.contentsView.addArrangedSubView(frameview)
+                let frameview = ASBox(context: ctxt, frameId: fid) ; fid += 1
+                dropview.addArrangedSubView(frameview)
                 mFrameView = frameview
 
                 /* fix the size of main view */
@@ -89,7 +107,7 @@ public class StackViewController: MIViewController
         private func allocateEditView(context ctxt: MFContext, frameId frameid: Int) -> Int {
                 var fid = frameid
 
-                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                let mview = ASBox(context: ctxt, frameId: fid) ; fid += 1
                 mview.axis = .vertical
                 mEditView.addArrangedSubView(mview)
 
@@ -103,7 +121,7 @@ public class StackViewController: MIViewController
         private func allocateToolView(context ctxt: MFContext, frameId frameid: Int) -> Int {
                 var fid = frameid
 
-                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                let mview = ASBox(context: ctxt, frameId: fid) ; fid += 1
                 mview.axis = .horizontal
                 mview.distribution = .fillEqually
                 mToolView.addArrangedSubView(mview)
