@@ -60,11 +60,9 @@ public class StackViewController: MIViewController
                 dropview.contentsView.axis = .vertical
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
-                        if let myself = self, let mgr = myself.mFrameManager {
-                                let uname = "\(name)_\(myself.mUniqId)"
-                                NSLog("Add dragged frame: \(uname)")
-                                myself.mUniqId += 1
-                                mgr.add(point: pt, name: uname, frame: frame)
+                        if let myself = self {
+                                /* add the frame to view */
+                                myself.addDroppedFrame(at: pt, name: name, frame: frame)
 
                                 /* requre layout again */
                                 myself.requireLayout()
@@ -84,6 +82,25 @@ public class StackViewController: MIViewController
                 mMainView.set(contentSize: fixsize)
 
                 return fid
+        }
+
+        private func addDroppedFrame(at point: CGPoint, name nm: String,  frame frm: ASFrame) {
+                guard let mgr = self.mFrameManager, let root = mFrameView else {
+                        NSLog("[Error] No frame manager or frame view in \(#file)")
+                        return
+                }
+
+                let uname = "\(nm)_\(self.mUniqId)"
+                NSLog("Add dragged frame: \(uname)")
+                self.mUniqId += 1
+
+                let detector = ASDropDetector()
+                if let detview = detector.detect(point: point, in: root) {
+                        NSLog("The detected point is found: \(detview.description)")
+                } else {
+                        NSLog("The detected point is NOT found")
+                }
+                mgr.add(name: uname, frame: frm, in: root, at: point)
         }
 
         private func allocateEditView(context ctxt: MFContext, frameId frameid: Int) -> Int {
