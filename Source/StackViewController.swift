@@ -91,16 +91,16 @@ public class StackViewController: MIViewController
                 }
 
                 let uname = "\(nm)_\(self.mUniqId)"
-                NSLog("Add dragged frame: \(uname)")
                 self.mUniqId += 1
 
                 let detector = ASDropDetector()
-                if let detview = detector.detect(point: point, in: root) {
-                        NSLog("The detected point is found: \(detview.description)")
+                if let detpoint = detector.detect(point: point, in: root) {
+                        //NSLog("The detected point is found: \(detpoint.description)")
+                        mgr.insert(name: uname, frame: frm, at: detpoint)
                 } else {
-                        NSLog("The detected point is NOT found")
+                        NSLog("[Error] The detected point is NOT found")
                 }
-                mgr.add(name: uname, frame: frm, in: root, at: point)
+
         }
 
         private func allocateEditView(context ctxt: MFContext, frameId frameid: Int) -> Int {
