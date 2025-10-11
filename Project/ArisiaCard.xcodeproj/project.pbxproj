@@ -19,9 +19,6 @@
 		059207C82E08189100E19709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207BD2E08189100E19709 /* AppDelegate.swift */; };
 		059207C92E08189100E19709 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C02E08189100E19709 /* Document.swift */; };
 		059207CA2E08189100E19709 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* RootViewController.swift */; };
-		05E65FF12E5DF819009C157E /* no-image.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E65FEE2E5DF5CD009C157E /* no-image.png */; };
-		05E65FF22E5DF819009C157E /* home.as in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E11BA12E23C817000FBA96 /* home.as */; };
-		05E65FF32E5DF819009C157E /* manifest.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05E11BA22E23C817000FBA96 /* manifest.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,18 +36,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		05E11BA02E23C7DB000FBA96 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Stacks/Default.astack;
-			dstSubfolderSpec = 7;
-			files = (
-				05E65FF12E5DF819009C157E /* no-image.png in CopyFiles */,
-				05E65FF22E5DF819009C157E /* home.as in CopyFiles */,
-				05E65FF32E5DF819009C157E /* manifest.json in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -64,9 +49,6 @@
 		059207C02E08189100E19709 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		059207C32E08189100E19709 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		05D7EB652E08185D004272CC /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		05E11BA12E23C817000FBA96 /* home.as */ = {isa = PBXFileReference; lastKnownFileType = text; path = home.as; sourceTree = "<group>"; };
-		05E11BA22E23C817000FBA96 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
-		05E65FEE2E5DF5CD009C157E /* no-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -159,28 +141,9 @@
 			isa = PBXGroup;
 			children = (
 				05A0FBCA2E2541ED0021DF4A /* Samples */,
-				05E11B9E2E23C5FC000FBA96 /* Stacks */,
 			);
 			name = Resource;
 			path = ../Resource;
-			sourceTree = "<group>";
-		};
-		05E11B9E2E23C5FC000FBA96 /* Stacks */ = {
-			isa = PBXGroup;
-			children = (
-				05E11B9F2E23C61F000FBA96 /* Default.astack */,
-			);
-			path = Stacks;
-			sourceTree = "<group>";
-		};
-		05E11B9F2E23C61F000FBA96 /* Default.astack */ = {
-			isa = PBXGroup;
-			children = (
-				05E65FEE2E5DF5CD009C157E /* no-image.png */,
-				05E11BA12E23C817000FBA96 /* home.as */,
-				05E11BA22E23C817000FBA96 /* manifest.json */,
-			);
-			path = Default.astack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +157,6 @@
 				05D7EB622E08185D004272CC /* Frameworks */,
 				05D7EB632E08185D004272CC /* Resources */,
 				055619042E0C412300BEB418 /* Embed Frameworks */,
-				05E11BA02E23C7DB000FBA96 /* CopyFiles */,
 			);
 			buildRules = (
 			);

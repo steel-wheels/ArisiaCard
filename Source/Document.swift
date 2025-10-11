@@ -13,26 +13,20 @@ class Document: NSDocument
 {
         static let DocumentTypeName = "com.github.steelwheels.arisiacard.stack"
 
-        private var mDocument:          ASDocument
+        private var mStack:             ASStack
+        private var mResource:          ASResource
         private var mDidStackLoaded:    Bool
 
         override init() {
-                if let resdir = FileManager.default.resourceDirectory {
-                        let pkgdir = resdir.appending(path: "Stacks/Default.astack")
-                        switch ASDocument.load(packageDirectory: pkgdir) {
-                        case .success(let doc):
-                                mDocument = doc
-                        case .failure(let err):
-                                NSLog("[Error] \(MIError.errorToString(error: err)) at \(#function)")
-                                let resource = ASResource(packageDirectory: pkgdir)
-                                mDocument = ASDocument(resource: resource)
-                        }
-                } else {
-                        NSLog("[Error] Failed to get resource directory")
-                        let nulldir  = URL(filePath: "/dev/null")
-                        let resource = ASResource(packageDirectory: nulldir)
-                        mDocument = ASDocument(resource: resource)
+                let pkg: ASPackage
+                switch ASPackage.loadNewPackage() {
+                case .success(let p):
+                        pkg = p
+                case .failure(let err):
+                        fatalError("[Error] \(MIError.errorToString(error: err)) at \(#file)")
                 }
+                mStack          = ASStack(package: pkg)
+                mResource       = ASResource()
                 mDidStackLoaded = true
                 super.init()
         }
@@ -53,23 +47,21 @@ class Document: NSDocument
         override func read(from url: URL, ofType typeName: String) throws {
                 switch typeName {
                 case Document.DocumentTypeName:
-                        switch ASDocument.load(packageDirectory: url) {
-                        case .success(let doc):
-                                mDocument       = doc
-                                mDidStackLoaded = true
-                                updateViewController()
+                        switch ASPackage.load(from: url) {
+                        case .success(let pkg):
+                                mStack = ASStack(package: pkg)
                         case .failure(let err):
-                                throw err
+                                NSLog("[Error] \(MIError.errorToString(error: err)) at \(#file)")
                         }
                 default:
-                        NSLog("[Error] typename: \(typeName) at \(#function)")
+                        NSLog("[Error] typename: \(typeName) at \(#file)")
                         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
                 }
         }
 
         override func save(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType, completionHandler: @escaping ((any Error)?) -> Void) {
                 NSLog("write to \(url.path), typename: \(typeName)")
-                if let err = mDocument.save(to: url) {
+                if let err = mStack.save(to: url) {
                         NSLog("[Error] \(MIError.errorToString(error: err)) at \(#file)")
                         completionHandler(err)
                 } else {
@@ -80,7 +72,7 @@ class Document: NSDocument
         private func updateViewController() {
                 if mDidStackLoaded {
                         if let rctrl = rootViewController() {
-                                rctrl.loadStack(stack: mDocument.stack, resource: mDocument.resource)
+                                rctrl.loadStack(stack: mStack, resource: mResource)
                                 mDidStackLoaded = false
                         }
                 }
