@@ -18,7 +18,7 @@ class RootViewController: MITabViewController
                         switch stack.frame(fileName: fname) {
                         case .success(let frame):
                                 if let view = self.currentViewController() as? StackViewController {
-                                        view.loadFrame(frame: frame, package: stack.package)
+                                        view.loadFrame(frame: frame, package: stack.package, resource: res)
                                 } else {
                                         NSLog("[Error] Failed to load stack for index \(idx)")
                                 }

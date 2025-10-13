@@ -24,12 +24,14 @@ public class StackViewController: MIViewController
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameManager:      ASFrameManager?         = nil
         private var mPackage:           ASPackage?              = nil
+        private var mResource:          ASResource?             = nil
         private var mUniqId:            Int = 0
 
-        public func loadFrame(frame frm: ASFrame, package pkg: ASPackage) {
+        public func loadFrame(frame frm: ASFrame, package pkg: ASPackage, resource res: ASResource) {
                 NSLog("Load root frame")
                 mFrameManager = ASFrameManager(frame: frm)
                 mPackage      = pkg
+                mResource     = res
 
                 /* requre layout again */
                 self.requireLayout()
@@ -167,10 +169,10 @@ public class StackViewController: MIViewController
                 }
 
                 NSLog("viewWillLayout")
-                if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let pkg = mPackage {
+                if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let pkg = mPackage, let res = mResource {
                         NSLog("Compile: " + rootfrm.encode())
                         stackview.removeAllSubviews()
-                        let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg, package: pkg)
+                        let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg, package: pkg, resource: res)
                         if let err = compiler.compile(frame: rootfrm, into: stackview) {
                                 NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
                         }
