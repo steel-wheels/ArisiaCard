@@ -18,14 +18,12 @@ class Document: NSDocument
         private var mDidStackLoaded:    Bool
 
         override init() {
-                let pkg: ASPackage
-                switch ASPackage.loadNewPackage() {
-                case .success(let p):
-                        pkg = p
+                switch ASStack.loadNewStack() {
+                case .success(let stack):
+                        mStack = stack
                 case .failure(let err):
                         fatalError("[Error] \(MIError.errorToString(error: err)) at \(#file)")
                 }
-                mStack          = ASStack(package: pkg)
                 mResource       = ASResource()
                 mDidStackLoaded = true
                 super.init()
@@ -47,9 +45,9 @@ class Document: NSDocument
         override func read(from url: URL, ofType typeName: String) throws {
                 switch typeName {
                 case Document.DocumentTypeName:
-                        switch ASPackage.load(from: url) {
-                        case .success(let pkg):
-                                mStack = ASStack(package: pkg)
+                        switch ASStack.load(from: url) {
+                        case .success(let stack):
+                                mStack = stack
                         case .failure(let err):
                                 NSLog("[Error] \(MIError.errorToString(error: err)) at \(#file)")
                         }
