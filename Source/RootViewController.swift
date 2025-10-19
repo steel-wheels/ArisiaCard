@@ -14,18 +14,10 @@ class RootViewController: MITabViewController
 {
         public func loadStack(stack: ASStack, resource res: ASResource) {
                 let idx = currentViewIndex()
-                if let fname = stack.scriptFileName(at: idx){
-                        if let frame = stack.frame(name: fname) {
-                                if let view = self.currentViewController() as? StackViewController {
-                                        view.loadFrame(frame: frame, package: stack.package, resource: res)
-                                } else {
-                                        NSLog("[Error] Failed to load stack for index \(idx)")
-                                }
-                        } else {
-                                NSLog("[Error] No frame found for \(fname) at \(#file)")
-                        }
+                if let view = self.currentViewController() as? StackViewController {
+                        view.loadFrame(stack: stack, frameIndex: idx, resource: res)
                 } else {
-                        NSLog("[Error] No frame name for index \(idx) at \(#file)" )
+                        NSLog("[Error] Failed to load stack for index \(idx)")
                 }
         }
 

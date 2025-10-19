@@ -20,17 +20,25 @@ public class StackViewController: MIViewController
         private var mContext:           MFContext?              = nil
         private var mVirtualMachine:    JSVirtualMachine        = JSVirtualMachine()
         private var mConsoleStorage:    MITextStorage?          = nil
+        private var mStack:             ASStack?                = nil
+        private var mFrameIndex:        Int                     = 0
         private var mFrameView:         MFStack?                = nil
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameManager:      ASFrameManager?         = nil
-        private var mPackage:           ASPackage?              = nil
         private var mResource:          ASResource?             = nil
         private var mUniqId:            Int = 0
 
-        public func loadFrame(frame frm: ASFrame, package pkg: ASPackage, resource res: ASResource) {
+        public func loadFrame(stack stk: ASStack, frameIndex fidx: Int, resource res: ASResource) {
                 NSLog("Load root frame")
-                mFrameManager = ASFrameManager(frame: frm)
-                mPackage      = pkg
+
+                guard let frame = stk.frame(at: fidx) else {
+                        NSLog("[Error] No valid frame at \(#file)")
+                        return
+                }
+
+                mStack        = stk
+                mFrameManager = ASFrameManager(frame: frame)
+                mFrameIndex   = fidx
                 mResource     = res
 
                 /* requre layout again */
@@ -163,13 +171,12 @@ public class StackViewController: MIViewController
         open override func viewWillLayout() {
                 super.viewWillLayout()
 
-                guard let rootfrm = mFrameManager?.rootFrame else {
-                        NSLog("[Error] No frame manager at \(#file)")
+                NSLog("viewWillLayout")
+                guard let rootfrm = mFrameManager?.rootFrame, let pkg = mStack?.package else {
+                        NSLog("[Error] No frame manager or package at \(#file)")
                         return
                 }
-
-                NSLog("viewWillLayout")
-                if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let pkg = mPackage, let res = mResource {
+                if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let res = mResource {
                         NSLog("Compile: " + rootfrm.encode())
                         stackview.removeAllSubviews()
                         let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg, package: pkg, resource: res)
