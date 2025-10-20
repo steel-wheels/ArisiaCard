@@ -172,8 +172,8 @@ public class StackViewController: MIViewController
                 super.viewWillLayout()
 
                 NSLog("viewWillLayout")
-                guard let rootfrm = mFrameManager?.rootFrame, let pkg = mStack?.package else {
-                        NSLog("[Error] No frame manager or package at \(#file)")
+                guard let rootfrm = mFrameManager?.rootFrame, let stack = mStack, let pkg = mStack?.package else {
+                        NSLog("[Error] No frame manager, stack or package at \(#file)")
                         return
                 }
                 if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let res = mResource {
@@ -183,6 +183,7 @@ public class StackViewController: MIViewController
                         if let err = compiler.compile(frame: rootfrm, into: stackview) {
                                 NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
                         }
+                        stack.updateFrame(index: self.mFrameIndex)
                 } else {
                         NSLog("[Error] No object at \(#function)")
                 }
