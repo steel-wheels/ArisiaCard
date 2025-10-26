@@ -64,6 +64,7 @@ class Document: NSDocument
                         completionHandler(err)
                 } else {
                         completionHandler(nil)
+                        self.fileURL = url
                 }
         }
 

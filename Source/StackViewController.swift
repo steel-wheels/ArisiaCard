@@ -148,8 +148,8 @@ public class StackViewController: MIViewController
         }
 
         open override func acceptViewEvent(_ event: MIViewEvent) {
-                guard let mgr = mFrameManager else {
-                        NSLog("[Error] No manager")
+                guard let mgr = mFrameManager, let pkg = mStack?.package else {
+                        NSLog("[Error] No manager or package")
                         return
                 }
 
@@ -157,7 +157,7 @@ public class StackViewController: MIViewController
                 if let frm = mgr.search(coreTag: event.tag) {
                         if let editor = mFrameEditor {
                                 //NSLog("acceptViewEvent: use frame \(frm.encode())")
-                                editor.set(target: frm, updatedCallback: {
+                                editor.set(target: frm, package: pkg, updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
                                         self.requireLayout()
