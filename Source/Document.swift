@@ -43,6 +43,7 @@ class Document: NSDocument
         }
 
         override func read(from url: URL, ofType typeName: String) throws {
+                NSLog("read from \(url.path), typename: \(typeName)")
                 switch typeName {
                 case Document.DocumentTypeName:
                         switch ASStack.load(from: url) {
