@@ -87,9 +87,7 @@ public class StackViewController: MIViewController
 
                 /* fix the size of main view */
                 let framesize = mMainView.frame.size
-                let fixsize   = MIContentSize(width:  .immediate(framesize.width),
-                                              height: .immediate(framesize.height))
-                mMainView.set(contentSize: fixsize)
+                mMainView.set(contentSize: framesize)
 
                 return fid
         }
