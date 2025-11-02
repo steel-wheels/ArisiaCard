@@ -170,6 +170,7 @@ public class StackViewController: MIViewController
                 super.viewWillLayout()
 
                 NSLog("viewWillLayout")
+
                 guard let rootfrm = mFrameManager?.rootFrame, let stack = mStack, let pkg = mStack?.package else {
                         NSLog("[Error] No frame manager, stack or package at \(#file)")
                         return
@@ -182,6 +183,10 @@ public class StackViewController: MIViewController
                                 NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
                         }
                         stack.updateFrame(index: self.mFrameIndex)
+
+                        NSLog("Pre-layout")
+                        let layouter = MIPreLayouter()
+                        layouter.layout(rootView: stackview)
                 } else {
                         NSLog("[Error] No object at \(#function)")
                 }
