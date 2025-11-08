@@ -25,6 +25,7 @@ public class StackViewController: MIViewController
         private var mFrameView:         MFStack?                = nil
         private var mFrameEditor:       ASFrameEditor?          = nil
         private var mFrameManager:      ASFrameManager?         = nil
+        private var mDidFrameUpdated:   Bool                    = true
         private var mResource:          ASResource?             = nil
         private var mUniqId:            Int = 0
 
@@ -40,9 +41,6 @@ public class StackViewController: MIViewController
                 mFrameManager = ASFrameManager(frame: frame)
                 mFrameIndex   = fidx
                 mResource     = res
-
-                /* requre layout again */
-                self.requireLayout()
         }
 
         public override func viewDidLoad() {
@@ -75,6 +73,8 @@ public class StackViewController: MIViewController
                                 myself.addDroppedFrame(at: pt, name: name, frame: frame)
 
                                 /* requre layout again */
+                                NSLog("require layout at \(#file)")
+                                myself.mDidFrameUpdated = true
                                 myself.requireLayout()
                         }
                 }
@@ -108,7 +108,6 @@ public class StackViewController: MIViewController
                 } else {
                         NSLog("[Error] The detected point is NOT found")
                 }
-
         }
 
         private func allocateEditView(context ctxt: MFContext, frameId frameid: Int) -> Int {
@@ -158,7 +157,8 @@ public class StackViewController: MIViewController
                                 editor.set(target: frm, package: pkg, updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
-                                        self.requireLayout()
+                                        self.mDidFrameUpdated = true
+                                        self.requireDisplay()
                                 })
                         }
                 } else {
@@ -167,28 +167,42 @@ public class StackViewController: MIViewController
         }
 
         open override func viewWillLayout() {
-                super.viewWillLayout()
-
-                NSLog("viewWillLayout")
+                NSLog("viewWillLayout start")
 
                 guard let rootfrm = mFrameManager?.rootFrame, let stack = mStack, let pkg = mStack?.package else {
-                        NSLog("[Error] No frame manager, stack or package at \(#file)")
+                        super.viewWillLayout()
                         return
                 }
-                if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let res = mResource {
-                        NSLog("Compile: " + rootfrm.encode())
-                        stackview.removeAllSubviews()
-                        let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg, package: pkg, resource: res)
-                        if let err = compiler.compile(frame: rootfrm, into: stackview) {
-                                NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
-                        }
-                        stack.updateFrame(index: self.mFrameIndex)
 
-                        NSLog("Pre-layout")
-                        let layouter = MIPreLayouter()
-                        layouter.layout(rootView: stackview)
+                if let stackview = mFrameView, let ctxt = mContext, let strg = mConsoleStorage, let res = mResource {
+                        if mDidFrameUpdated {
+                                NSLog("Compile: " + rootfrm.encode())
+                                stackview.removeAllSubviews()
+                                let compiler = ASFrameCompiler(context: ctxt, consoleStorage: strg, package: pkg, resource: res)
+                                if let err = compiler.compile(frame: rootfrm, into: stackview) {
+                                        NSLog("[Error] \(MIError.toString(error: err)) at \(#function)")
+                                }
+                                stack.updateFrame(index: self.mFrameIndex)
+
+                                NSLog("Pre-layout")
+                                let layouter = MIPreLayouter()
+                                layouter.layout(rootView: stackview)
+
+                                mDidFrameUpdated = false
+                        }
                 } else {
                         NSLog("[Error] No object at \(#function)")
                 }
+
+                NSLog("viewWillLayout end")
+                super.viewWillLayout()
+        }
+
+        open override func viewDidLayout() {
+                super.viewDidLayout()
+
+                NSLog("View-layout")
+                let dumper = MIViewDumper()
+                mMainView.accept(visitor: dumper)
         }
 }
