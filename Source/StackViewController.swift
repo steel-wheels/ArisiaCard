@@ -44,7 +44,6 @@ public class StackViewController: MIViewController
         }
 
         public override func viewDidLoad() {
-                var fid: Int = 0
                 //NSLog("viewDidLoad at \(#file)")
 
                 super.viewDidLoad()
@@ -52,19 +51,17 @@ public class StackViewController: MIViewController
                 let ctxt = MFContext(virtualMachine: mVirtualMachine)
                 mContext = ctxt
 
-                fid = allocateMainView(context: ctxt, frameId: fid)
-                fid = allocateEditView(context: ctxt, frameId: fid)
-                fid = allocateToolView(context: ctxt, frameId: fid)
+                allocateMainView(context: ctxt)
+                allocateEditView(context: ctxt)
+                allocateToolView(context: ctxt)
         }
 
-        private func allocateMainView(context ctxt: MFContext, frameId frameid: Int) -> Int {
-                var fid = frameid
-
-                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+        private func allocateMainView(context ctxt: MFContext) {
+                let mview = MFStack(context: ctxt)
                 mview.axis = .vertical
                 mMainView.addArrangedSubView(mview)
 
-                let dropview = ASDropView(context: ctxt, frameId: fid)
+                let dropview = ASDropView(context: ctxt)
                 dropview.contentsView.axis = .vertical
                 dropview.droppingCallback = {
                         [weak self] (_ pt: CGPoint, _ name: String, _ frame: ASFrame) -> Void in
@@ -78,18 +75,16 @@ public class StackViewController: MIViewController
                                 myself.requireLayout()
                         }
                 }
-                mview.addArrangedSubView(dropview) ; fid += 1
+                mview.addArrangedSubView(dropview) ;
 
                 /* allocate frame view */
-                let frameview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+                let frameview = MFStack(context: ctxt)
                 dropview.contentsView.addArrangedSubView(frameview)
                 mFrameView = frameview
 
                 /* fix the size of main view */
                 let framesize = mMainView.frame.size
                 mMainView.set(contentSize: framesize)
-
-                return fid
         }
 
         private func addDroppedFrame(at point: CGPoint, name nm: String,  frame frm: ASFrame) {
@@ -110,24 +105,18 @@ public class StackViewController: MIViewController
                 }
         }
 
-        private func allocateEditView(context ctxt: MFContext, frameId frameid: Int) -> Int {
-                var fid = frameid
-
-                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+        private func allocateEditView(context ctxt: MFContext) {
+                let mview = MFStack(context: ctxt)
                 mview.axis = .vertical
                 mEditView.addArrangedSubView(mview)
 
                 let editor = ASFrameEditor()
                 mview.addArrangedSubView(editor)
                 mFrameEditor = editor
-
-                return fid
         }
 
-        private func allocateToolView(context ctxt: MFContext, frameId frameid: Int) -> Int {
-                var fid = frameid
-
-                let mview = MFStack(context: ctxt, frameId: fid) ; fid += 1
+        private func allocateToolView(context ctxt: MFContext) {
+                let mview = MFStack(context: ctxt)
                 mview.axis = .horizontal
                 mview.distribution = .fillEqually
                 mToolView.addArrangedSubView(mview)
@@ -140,8 +129,6 @@ public class StackViewController: MIViewController
                 console.isEditable = false
                 mview.addArrangedSubView(console)
                 mConsoleStorage = console.textStorage
-
-                return fid
         }
 
         open override func acceptViewEvent(_ event: MIViewEvent) {
@@ -151,14 +138,15 @@ public class StackViewController: MIViewController
                 }
 
                 //NSLog("acceptViewEvent: \(event.tag) at \(#function)")
-                if let frm = mgr.search(coreTag: event.tag) {
+                let fid = MFInterfaceTagToFrameId(interfaceTag: event.tag)
+                if let frm = mgr.search(frameId: fid) {
                         if let editor = mFrameEditor {
                                 //NSLog("acceptViewEvent: use frame \(frm.encode())")
                                 editor.set(target: frm, package: pkg, updatedCallback: {
                                         (_ frameid: Int) -> Void in
                                         NSLog("acceptViewEvent: \(event.tag) -> \(frameid) at \(#function)")
                                         self.mDidFrameUpdated = true
-                                        self.requireDisplay()
+                                        self.requireLayout()
                                 })
                         }
                 } else {
