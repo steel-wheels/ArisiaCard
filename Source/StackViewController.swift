@@ -85,6 +85,9 @@ public class StackViewController: MIViewController
                 /* fix the size of main view */
                 let framesize = mMainView.frame.size
                 mMainView.set(contentSize: framesize)
+
+                /* insert constrsint */
+                MIConstraintInserter.insertConstraints(view: mview, space: 4.0)
         }
 
         private func addDroppedFrame(at point: CGPoint, name nm: String,  frame frm: ASFrame) {
@@ -113,6 +116,9 @@ public class StackViewController: MIViewController
                 let editor = ASFrameEditor()
                 mview.addArrangedSubView(editor)
                 mFrameEditor = editor
+
+                /* insert constrsint */
+                MIConstraintInserter.insertConstraints(view: mview, space: 4.0)
         }
 
         private func allocateToolView(context ctxt: MFContext) {
@@ -129,6 +135,9 @@ public class StackViewController: MIViewController
                 console.isEditable = false
                 mview.addArrangedSubView(console)
                 mConsoleStorage = console.textStorage
+
+                /* insert constrsint */
+                MIConstraintInserter.insertConstraints(view: mview, space: 4.0)
         }
 
         open override func acceptViewEvent(_ event: MIViewEvent) {
@@ -175,6 +184,9 @@ public class StackViewController: MIViewController
                                 NSLog("Pre-layout")
                                 let layouter = MIPreLayouter()
                                 layouter.layout(rootView: stackview)
+
+                                NSLog("Insert constraints")
+                                MIConstraintInserter.insertConstraints(view: stackview, space: 0.0)
 
                                 mDidFrameUpdated = false
                         }
