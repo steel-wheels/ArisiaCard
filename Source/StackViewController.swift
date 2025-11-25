@@ -84,7 +84,7 @@ public class StackViewController: MIViewController
 
                 /* fix the size of main view */
                 let framesize = mMainView.frame.size
-                mMainView.set(contentSize: framesize)
+                mMainView.setFrameSize(framesize)
         }
 
         private func addDroppedFrame(at point: CGPoint, name nm: String,  frame frm: ASFrame) {
@@ -173,8 +173,10 @@ public class StackViewController: MIViewController
                                 stack.updateFrame(index: self.mFrameIndex)
 
                                 NSLog("Pre-layout")
-                                let layouter = MIPreLayouter()
-                                layouter.layout(rootView: stackview)
+                                MIPreLayouter.layout(rootView: mMainView)
+
+                                let dumper = MIViewDumper()
+                                mMainView.accept(visitor: dumper)
 
                                 mDidFrameUpdated = false
                         }
@@ -189,7 +191,8 @@ public class StackViewController: MIViewController
         open override func viewDidLayout() {
                 super.viewDidLayout()
 
-                NSLog("View-layout")
+                NSLog("Post-layout")
+
                 let dumper = MIViewDumper()
                 mMainView.accept(visitor: dumper)
         }
