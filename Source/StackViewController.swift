@@ -96,10 +96,10 @@ public class StackViewController: MIViewController
                 let uname = "\(nm)_\(self.mUniqId)"
                 self.mUniqId += 1
 
-                let detector = ASDropDetector()
-                if let detpoint = detector.detect(point: point, in: root) {
-                        //NSLog("The detected point is found: \(detpoint.description)")
-                        mgr.insert(name: uname, frame: frm, at: detpoint)
+                NSLog("View finder")
+                if let dpc = MIViewFinder.find(in: root, at: point) {
+                        NSLog("View Finder (Detect) : \(dpc.description)")
+                        mgr.insert(name: uname, frame: frm, at: dpc)
                 } else {
                         NSLog("[Error] The detected point is NOT found")
                 }
