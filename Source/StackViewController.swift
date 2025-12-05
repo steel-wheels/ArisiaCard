@@ -23,7 +23,7 @@ public class StackViewController: MIViewController
         private var mStack:             ASStack?                = nil
         private var mFrameIndex:        Int                     = 0
         private var mFrameView:         MFStack?                = nil
-        private var mFrameEditor:       ASFrameEditor?          = nil
+        private var mFrameEditor:       ASFrameEditorView?      = nil
         private var mFrameManager:      ASFrameManager?         = nil
         private var mDidFrameUpdated:   Bool                    = true
         private var mResource:          ASResource?             = nil
@@ -110,7 +110,7 @@ public class StackViewController: MIViewController
                 mview.axis = .vertical
                 mEditView.addArrangedSubView(mview)
 
-                let editor = ASFrameEditor()
+                let editor = ASFrameEditorView()
                 mview.addArrangedSubView(editor)
                 mFrameEditor = editor
         }
