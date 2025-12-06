@@ -99,7 +99,15 @@ public class StackViewController: MIViewController
                 NSLog("View finder")
                 if let dpc = MIViewFinder.find(in: root, at: point) {
                         NSLog("View Finder (Detect) : \(dpc.description)")
-                        mgr.insert(name: uname, frame: frm, at: dpc)
+                        let command: ASFrameCommand = .insert(uname, frm, dpc)
+                        switch command.execute(rootFrame: mgr.rootFrame) {
+                        case .ok:
+                                break
+                        case .error(let msg):
+                                NSLog("[Error] Failed to insert: \(msg)")
+                        @unknown default:
+                                NSLog("[Error] Failed to insert: Unknown")
+                        }
                 } else {
                         NSLog("[Error] The detected point is NOT found")
                 }
