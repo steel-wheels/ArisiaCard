@@ -141,7 +141,7 @@ public class StackViewController: MIViewController
 
                 //NSLog("acceptViewEvent: \(event.tag) at \(#function)")
                 let fid = MFInterfaceTagToFrameId(interfaceTag: event.tag)
-                if let frm = mgr.search(frameId: fid) {
+                if let frm = ASFrameCommand.search(frame: mgr.rootFrame, frameId: fid) {
                         if let editor = mFrameEditor {
                                 //NSLog("acceptViewEvent: use frame \(frm.encode())")
                                 editor.set(target: frm, package: pkg, updatedCallback: {
