@@ -23,6 +23,7 @@ public class StackViewController: MIViewController
         private var mStack:             ASStack?                = nil
         private var mFrameIndex:        Int                     = 0
         private var mFrameView:         MFStack?                = nil
+        private var mFrameCommandQueue: ASFrameCommandQueue     = ASFrameCommandQueue()
         private var mFrameEditor:       ASFrameEditorView?      = nil
         private var mFrameManager:      ASFrameManager?         = nil
         private var mDidFrameUpdated:   Bool                    = true
@@ -96,17 +97,10 @@ public class StackViewController: MIViewController
                 let uname = "\(nm)_\(self.mUniqId)"
                 self.mUniqId += 1
 
-                NSLog("View finder")
                 if let dpc = MIViewFinder.find(in: root, at: point) {
                         NSLog("View Finder (Detect) : \(dpc.description)")
-                        let command: ASFrameCommand = .insert(uname, frm, dpc)
-                        switch command.execute(rootFrame: mgr.rootFrame) {
-                        case .ok:
-                                break
-                        case .error(let msg):
-                                NSLog("[Error] Failed to insert: \(msg)")
-                        @unknown default:
-                                NSLog("[Error] Failed to insert: Unknown")
+                        if !mFrameCommandQueue.insert(rootFrame: mgr.rootFrame, sourceName: uname, sourceFrame: frm, detectedPoint: dpc) {
+                                NSLog("[Error] Failed to insert")
                         }
                 } else {
                         NSLog("[Error] The detected point is NOT found")
