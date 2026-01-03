@@ -19,6 +19,8 @@
 		059207C82E08189100E19709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207BD2E08189100E19709 /* AppDelegate.swift */; };
 		059207C92E08189100E19709 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C02E08189100E19709 /* Document.swift */; };
 		059207CA2E08189100E19709 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059207C32E08189100E19709 /* RootViewController.swift */; };
+		05E3C7802F08BA4F00D4F31B /* JavaScriptKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E3C77F2F08BA4F00D4F31B /* JavaScriptKit.xcframework */; };
+		05E3C7812F08BA4F00D4F31B /* JavaScriptKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05E3C77F2F08BA4F00D4F31B /* JavaScriptKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				05E3C7812F08BA4F00D4F31B /* JavaScriptKit.xcframework in Embed Frameworks */,
 				055619012E0C412300BEB418 /* MultiDataKit.xcframework in Embed Frameworks */,
 				055619032E0C412300BEB418 /* MultiUIKit.xcframework in Embed Frameworks */,
 				055618FF2E0C412300BEB418 /* MultiFrameKit.xcframework in Embed Frameworks */,
@@ -49,6 +52,7 @@
 		059207C02E08189100E19709 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		059207C32E08189100E19709 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		05D7EB652E08185D004272CC /* ArisiaCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArisiaCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05E3C77F2F08BA4F00D4F31B /* JavaScriptKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JavaScriptKit.xcframework; path = ../../../Library/Frameworks/JavaScriptKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -77,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E3C7802F08BA4F00D4F31B /* JavaScriptKit.xcframework in Frameworks */,
 				055619002E0C412300BEB418 /* MultiDataKit.xcframework in Frameworks */,
 				055619022E0C412300BEB418 /* MultiUIKit.xcframework in Frameworks */,
 				055618FE2E0C412300BEB418 /* MultiFrameKit.xcframework in Frameworks */,
@@ -90,6 +95,7 @@
 		055618FA2E0C412300BEB418 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05E3C77F2F08BA4F00D4F31B /* JavaScriptKit.xcframework */,
 				05259BA62E2D16EF00ED2BC5 /* ArisiaPlatform.xcframework */,
 				055F658B2E1EB6FC0073F4F8 /* ArisiaScript.xcframework */,
 				055618FC2E0C412300BEB418 /* MultiDataKit.xcframework */,
@@ -252,6 +258,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -282,6 +289,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.steel-wheels.ArisiaCard.macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
