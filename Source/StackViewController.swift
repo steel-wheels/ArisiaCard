@@ -8,7 +8,6 @@
 import ArisiaPlatform
 import MultiUIKit
 import MultiFrameKit
-import JavaScriptKit
 import JavaScriptCore
 import Foundation
 
@@ -18,7 +17,7 @@ public class StackViewController: MIViewController
         @IBOutlet weak var mEditView: MIStack!
         @IBOutlet weak var mToolView: MIStack!
         
-        private var mContext:           KSContext?              = nil
+        private var mContext:           MFContext?              = nil
         private var mVirtualMachine:    JSVirtualMachine        = JSVirtualMachine()
         private var mConsoleStorage:    MITextStorage?          = nil
         private var mStack:             ASStack?                = nil
@@ -50,7 +49,7 @@ public class StackViewController: MIViewController
 
                 super.viewDidLoad()
 
-                let ctxt = KSContext(virtualMachine: mVirtualMachine)
+                let ctxt = MFContext(virtualMachine: mVirtualMachine)
                 mContext = ctxt
 
                 allocateMainView(context: ctxt)
@@ -58,7 +57,7 @@ public class StackViewController: MIViewController
                 allocateToolView(context: ctxt)
         }
 
-        private func allocateMainView(context ctxt: KSContext) {
+        private func allocateMainView(context ctxt: MFContext) {
                 let mview = MFStack(context: ctxt)
                 mview.axis = .vertical
                 mMainView.addArrangedSubView(mview)
@@ -108,7 +107,7 @@ public class StackViewController: MIViewController
                 }
         }
 
-        private func allocateEditView(context ctxt: KSContext) {
+        private func allocateEditView(context ctxt: MFContext) {
                 let mview = MFStack(context: ctxt)
                 mview.axis = .vertical
                 mEditView.addArrangedSubView(mview)
@@ -118,7 +117,7 @@ public class StackViewController: MIViewController
                 mFrameEditor = editor
         }
 
-        private func allocateToolView(context ctxt: KSContext) {
+        private func allocateToolView(context ctxt: MFContext) {
                 let mview = MFStack(context: ctxt)
                 mview.axis = .horizontal
                 mview.distribution = .fillEqually
