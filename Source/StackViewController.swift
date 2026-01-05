@@ -56,6 +56,16 @@ public class StackViewController: MIViewController
                 allocateMainView(context: ctxt)
                 allocateEditView(context: ctxt)
                 allocateToolView(context: ctxt)
+
+                /* setup library */
+                if let storage = mConsoleStorage {
+                        let lib = MFLibrary()
+                        if let err = lib.load(into: ctxt, storage: storage) {
+                                NSLog("[Error] \(err.description) at \(#file)")
+                        }
+                } else {
+                        NSLog("[Error] Failed to load library at \(#file)")
+                }
         }
 
         private func allocateMainView(context ctxt: KSContext) {
